@@ -2,11 +2,10 @@
 session_start();
 require_once '../components/db_connect.php';
 
-
-if (isset($_SESSION['user']) != "") {
-   header("Location: ../home.php");
-   exit;
-}
+// if (isset($_SESSION['user']) != "") {
+//    header("Location: ../home.php");
+//    exit;
+// }
 
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
    header("Location: ../login.php");
@@ -56,7 +55,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     <!-- [FORM] -->
     <form method="POST" action="actions/a_create.php" enctype="multipart/form-data" class=" mx-5 my-0">
         
-        <table class=" bg-dark table m-0 text-muted fs-6">
+        <table class=" bg-dark table m-0 text-muted fs-6 w-75 mx-auto">
                 <tr>
                     <td colspan="2"><h2 class="display-1 mb-5 text-center text-white my-4">New animal record</h2>
                     </td>

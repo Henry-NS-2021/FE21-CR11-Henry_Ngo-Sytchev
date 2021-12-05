@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 20. Nov 2021 um 15:28
--- Server-Version: 10.4.21-MariaDB
--- PHP-Version: 8.0.12
+-- Generation Time: Dec 05, 2021 at 02:31 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `fswd14_cr11_petadoption_henryngosytchev`
+-- Database: `fswd14_cr11_petadoption_henryngosytchev`
 --
 CREATE DATABASE IF NOT EXISTS `fswd14_cr11_petadoption_henryngosytchev` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `fswd14_cr11_petadoption_henryngosytchev`;
@@ -26,7 +26,7 @@ USE `fswd14_cr11_petadoption_henryngosytchev`;
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `animals`
+-- Table structure for table `animals`
 --
 
 CREATE TABLE `animals` (
@@ -42,11 +42,10 @@ CREATE TABLE `animals` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `animals`
+-- Dumping data for table `animals`
 --
 
 INSERT INTO `animals` (`animal_id`, `name`, `breed`, `picture`, `location`, `description`, `size`, `age`, `hobbies`) VALUES
-(1, 'Johnny', 'Terrier', 'logo_pets.jpg', 'Kerntnerstrasse 13/23', 'Dummy data', 34.85, 2.15, 'Play freesbee'),
 (2, 'Josie', 'Chausie Cat', 'chausie.jpg', 'Am Tabor 2/12', 'Elegant Cat', 21, 5, 'Spying on neighbours'),
 (3, 'Kallen', 'elkhound', 'elkhound.jpg', 'Praterstrasse 235/5/4', 'Mountain dog who loves hiking', 56.7, 14, 'Reading newspapers'),
 (4, 'Snoop', 'Rottweiler', 'rottweiler.jpg', 'Tierengasse 54/7', 'The Rottweiler is a robust working breed of great strength descended from the mastiffs of the Roman legions. A gentle playmate and protector within the family circle, the Rottie observes the outside world with a self-assured aloofness. A male Rottweiler will stand anywhere from 24 to 27 muscular inches at the shoulder; females run a bit smaller and lighter. The glistening, short black coat with smart rust markings add to the picture of imposing strength. A thickly muscled hindquarters powers the Rottie\'s effortless trotting gait. A well-bred and properly raised Rottie will be calm and confident, courageous but not unduly aggressive. The aloof demeanor these world-class guardians present to outsiders belies the playfulness, and downright silliness, that endear Rotties to their loved ones. (No one told the Rottie he\'s not a toy breed, so he is liable plop onto your lap for a cuddle.) Early training and socialization will harness a Rottie\'s territorial instincts in a positive way.\r\n', 37.15, 1.6, '-love swimming\r\n- walking, and trotting... especially with MY people\r\n'),
@@ -63,7 +62,7 @@ INSERT INTO `animals` (`animal_id`, `name`, `breed`, `picture`, `location`, `des
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `pet_adoption`
+-- Table structure for table `pet_adoption`
 --
 
 CREATE TABLE `pet_adoption` (
@@ -77,7 +76,7 @@ CREATE TABLE `pet_adoption` (
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -85,41 +84,33 @@ CREATE TABLE `users` (
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone_number` int(20) NOT NULL,
-  `address` varchar(100) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `user_status` enum('adm','user') NOT NULL DEFAULT 'user'
+  `status` enum('user','adm') DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Daten für Tabelle `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `address`, `picture`, `password`, `user_status`) VALUES
-(1, 'Gary', 'Holmes', 'gholmes@mail.at', 675602558, 'Passeti Strasse 32/2/8', 'avatar.png', '123123', 'user'),
-(2, 'Helmut', 'Kohler', 'hkohler@mail.at', 660502165, 'Handelskai 9/4/36', 'avatar.png', '123123', 'user'),
-(3, 'Joshua', 'Smith', 'jsmith@mail.at', 665502465, 'Am Tabor 63/7', 'avatar.png', '123123', 'user'),
-(4, 'Laura', 'Leroux', 'lleroux@mail.at', 669653265, 'Wienzeile 5/14', 'avatar.png', '123123', 'user'),
-(5, 'Aleksandar', 'Vuk', 'avuk@mail.at', 675978546, 'Kangranerweg 11a', 'avatar.png', '123123', 'user'),
-(6, 'Viktoria', 'Retti', 'vretti@mail.at', 685055232, 'Kettenbruekegasse 2/2/21', 'avatar.png', '123123', 'user'),
-(7, 'Alina', 'Comu', 'acomu@mail.at', 674856584, 'Innsbruker Alee 4b', 'avatar.png', '123123', 'user'),
-(8, 'Jaqueline', 'Cimpinard', 'jcimpinard@mail.at', 665555886, 'Meidlingerstrasse 241/5', 'avatar.png', '123123', 'user'),
-(9, 'Malik', 'Wahed', 'mwahed@mail.at', 662565696, 'Grinzingergasse 51b/1/6', 'avatar.png', '123123', 'user'),
-(10, 'Yasmina', 'Alabov', 'yalabov@mail.at', 650223589, 'Am Spitz 6/4', 'avatar.png', '123123', 'user');
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `date_of_birth`, `picture`, `password`, `status`) VALUES
+(1, 'Yasmina', 'Alabov', 'yalabov@mail.at', '0000-00-00', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(2, 'Harry', 'Potter', 'hp@magic.mg', '1993-09-23', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'adm'),
+(3, 'Janine', 'Hade', 'jh@email.at', '1999-02-21', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user');
 
 --
--- Indizes der exportierten Tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indizes für die Tabelle `animals`
+-- Indexes for table `animals`
 --
 ALTER TABLE `animals`
   ADD PRIMARY KEY (`animal_id`);
 
 --
--- Indizes für die Tabelle `pet_adoption`
+-- Indexes for table `pet_adoption`
 --
 ALTER TABLE `pet_adoption`
   ADD PRIMARY KEY (`adoption_id`),
@@ -127,39 +118,39 @@ ALTER TABLE `pet_adoption`
   ADD KEY `pet_id` (`pet_id`);
 
 --
--- Indizes für die Tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT für exportierte Tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT für Tabelle `animals`
+-- AUTO_INCREMENT for table `animals`
 --
 ALTER TABLE `animals`
-  MODIFY `animal_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `animal_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT für Tabelle `pet_adoption`
+-- AUTO_INCREMENT for table `pet_adoption`
 --
 ALTER TABLE `pet_adoption`
   MODIFY `adoption_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT für Tabelle `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints der exportierten Tabellen
+-- Constraints for dumped tables
 --
 
 --
--- Constraints der Tabelle `pet_adoption`
+-- Constraints for table `pet_adoption`
 --
 ALTER TABLE `pet_adoption`
   ADD CONSTRAINT `pet_adoption_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),

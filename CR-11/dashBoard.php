@@ -6,6 +6,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
    header("Location: index.php");
    exit;
 }
+
 //if session user exist it shouldn't access dashboard.php
 if (isset($_SESSION["user"])) {
    header("Location: home.php");

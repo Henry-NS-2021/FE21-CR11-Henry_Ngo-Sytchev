@@ -10,6 +10,7 @@ if(isset($_SESSION["user"])){
    header("Location: home.php");
    exit;
   }
+  
 //initial bootstrap class for the confirmation message
   $class = 'd-none';
 //the GET method will show the info from the user to be deleted

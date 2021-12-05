@@ -53,9 +53,9 @@
         <a class="nav_link text-decoration-none <?= (isset($_SESSION["adm"])?"d-none":""); ?>" href="<?= ($home_url??""); ?>../home.php">
             <span class="p-0 mb-1 mx-3">HOME</span>
         </a>
-        <a class="nav_link text-decoration-none" href="<?= ($logout_url??""); ?>../logout.php">
+        <!-- <a class="nav_link text-decoration-none" href="<?= ($logout_url??""); ?>logout?logout.php">
             <span class="p-0 mb-1 mx-3">LOG OUT</span>
-        </a>
+        </a> -->
         </p>
 </div>
 

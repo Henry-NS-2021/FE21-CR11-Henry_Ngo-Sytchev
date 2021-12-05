@@ -6,10 +6,10 @@
     //     exit;
     //  }
      
-    //  if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
-    //     header("Location: ../index.php");
-    //     exit;
-    //  }
+     if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+        header("Location: ../index.php");
+        exit;
+     }
      
     $sql = "SELECT * FROM animals;";
     $query = mysqli_query($connect, $sql);
@@ -28,7 +28,10 @@
                 <td>{$row['name']}</td>
                 <td>{$row['breed']}</td>
                 <td>{$row['age']}</td>
-                <td><a class='btn btn-outline-dark w-auto py-2' href='details.php?id={$row["animal_id"]}'><span>Show more</span></a></td>
+                <td>
+                    <a class='btn btn-outline-dark w-auto py-2' href='details.php?id={$row["animal_id"]}'><span>Show more</span>
+                    </a>
+                </td>
             </tr>
             ";
         }
@@ -63,7 +66,7 @@
 <body>
     <!-- [NAVBAR] -->
     <?php
-    $url="";
+    $url=$logout_url="";
     $img_url="../";
     require_once("../components/navbar.php"); 
     ?>
@@ -71,8 +74,8 @@
     <!-- [MAIN] -->
     <main class="bg-dark">
     <div class="container bg-dark py-5">
-        <h1 class="text-center text-light fw-light">All our Pets</h1>
-        <hr class="bg-success py-1">
+    <h1 class="text-center text-light fw-light display-4">Pets to Adopt</h1>
+        <hr class="bg-success py-1 mb-5">
         <table class="table table-light table-striped border border-muted my-5 mx-auto w-75">
             <thead class="table-dark text-center">
                 <tr class="align-middle">

@@ -2,6 +2,10 @@
 session_start();
     require_once("../components/db_connect.php");
     
+    if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
+        header("Location: ../index.php");
+        exit;
+    }
     
     if(@$_GET["id"]){
         $id = $_GET["id"];
@@ -13,7 +17,7 @@ session_start();
         if(mysqli_num_rows($query) == 1){
             foreach($result as $row){
                 $display = "
-                <div class='card my-5 mx-auto' style='width: 18rem;'>
+                <div class='card my-5 mx-auto' style='width: 21rem;'>
                     <img class='card-img-top img-fluid' src='../pictures/{$row["picture"]}' alt='Card image cap'>
                     <div class='card-body'>
                         <h3 class='card-title text-center mt-3'>{$row["name"]}
@@ -24,15 +28,26 @@ session_start();
                         <p class='p-0 m-0'>
                         <span class='text-secondary fw-bold'>Age:</span> {$row["age"]} years old </p> 
                         <p class='p-0 m-0'><span class='text-secondary fw-bold'>Size:</span> {$row["size"]} cm </p> 
-                        <p class='p-0 m-0'><span class='text-secondary fw-bold'>Hobbies:</span> {$row["hobbies"]}</p> 
+                        <p class='p-0 m-0'><span class='text-secondary fw-bold'>Hobbies:</span><br>{$row["hobbies"]}</p> 
                         
                         <hr>
                         <p class='card-text'><i class='bi bi-book-half'></i> <b class='text-secondary'>Description</b><br>{$row["description"]}</p>
                         <hr>
-                        <p class='card-text text-center'><small'><a class='btn btn-primary text-light p-0 m-0 w-50' href='adoption.php'>Take me home</a></small></p>
-                        <p class='card-text text-center" . (isset($_SESSION['user'])?'d-none': '') . "'><small'><a class='btn btn-outline-dark py-0 m-0 w-50' href='../dashBoard.php'>Dashboard</a></small></p>
+                        <p class='d-none card-text text-center'>
+                            <small'>
+                            <a class='btn btn-primary text-light p-0 m-0 w-50' href='adoption.php'>Take me home</a>
+                            </small>
+                        </p>
+                        <p class='d-none card-text text-center" . (isset($_SESSION['user'])?'d-none': '') . "'>
+                            <small'>
+                                <a class='btn btn-outline-dark py-0 m-0 w-50' href='../dashBoard.php'>Dashboard</a>
+                            </small>
+                        </p>
                         <p class='card-text text-center" . (isset($_SESSION['adm'])?'d-none': '') . "'>
-                        <small class='mt-2'><a href='index.php'>Return to the pet list</a></small></p>
+                            <small class='mt-2'>
+                                <a href='index.php'>Return to the pet list</a>
+                            </small>
+                        </p>
                     </div>
                 </div>
                 ";

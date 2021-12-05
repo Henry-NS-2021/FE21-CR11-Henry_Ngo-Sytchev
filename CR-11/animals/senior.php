@@ -1,10 +1,11 @@
 <?php
     session_start();
     require_once("../components/db_connect.php");
-    if (isset($_SESSION['user']) != "") {
-    header("Location: ../home.php");
-    exit;
-    }
+
+    // if (isset($_SESSION['user']) != "") {
+    // header("Location: ../home.php");
+    // exit;
+    // }
  
     if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: ../index.php");
@@ -65,7 +66,8 @@
 <body>
     <!-- [NAVBAR] -->
     <?php
-    $url="";
+    $url = "";
+    $logout_url = "../";
     $img_url="../";
     require_once("../components/navbar.php"); 
     ?>
