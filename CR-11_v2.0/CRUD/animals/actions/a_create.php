@@ -34,7 +34,7 @@ if ($_POST){
        $message = "<p class='my-2 fs-4'>The entry below was successfully created</p> <br>
             <table class='table table-success table-striped border border-2 border-light rounded w-100 m-auto'>
             <tr>
-            <th>PICTURE</th><td> <img class='img-fluid' src='../../pictures/{$picture->fileName}'></td>
+            <th>PICTURE</th><td> <img class='img-fluid' width='80vw' src='../../pictures/{$picture->fileName}'></td>
             </tr>
             <tr>
             <th>NAME</th><td> $name </td>

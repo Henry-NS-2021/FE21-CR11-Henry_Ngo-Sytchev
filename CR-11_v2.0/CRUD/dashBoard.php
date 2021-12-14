@@ -141,7 +141,7 @@ mysqli_close($connect);
        <h1 class='display-5 text-center text-white mt-5'>Pet Registry</h1>
        <hr class="bg-info shadow py-1 w-50 mx-auto mb-4 mt-1">
 
-       <div class="row w-75 border border-info border-2 rounded rounded-danger mt-3 mx-auto">
+       <div class="row w-75 table-responsive border border-info border-2 rounded rounded-danger mt-3 mx-auto">
        <table class="table table-light table-striped my-0">
         <thead class="table-dark">
             <tr class="align-middle">

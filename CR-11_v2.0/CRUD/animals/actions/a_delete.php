@@ -72,7 +72,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
             </div>
             <div class="alert alert-<?=$class;?> text-center pt-4 pb-4 mb-5"  role="alert">
                 <p><?=$message;?></p>
-               <a href ='../../dashBoard.php    '><button class ="btn btn-outline-dark mb-2 py-0 px-5 fw-bold w-100" type='button'>Dashboard</button></a >
+               <a href ='../../dashBoard.php    '><button class ="btn btn-outline-dark mb-2 py-0 px-5 fw-bold mx-auto w-50" type='button'>Dashboard</button></a >
            </div>
        </div>
     </main>

@@ -24,18 +24,29 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
             
             foreach($result as $data){
                 $delete .= "
-                <div class='alert alert-danger my-5 text-center fs-4 mx-auto'>
+                <div class='alert alert-muted border border-danger border-3 my-5 text-center text-danger fs-4 mx-auto w-100'>
                     <h2 class='display-3 my-3 fw-bold'>Attention!</h2>
+                    <hr class='bg-danger py-1 mx-auto w-75'>
                     <p>You are about to <b>delete</b> this record. <br>Would you REALLY like to do it?</p>
+
+                    <form class='m-0 p-0' action='actions/a_delete.php' method='POST'>
+                    <input type='hidden' name='animal_id' value='{$data['animal_id']}'>
+                    <input type='hidden' name='picture' value='{$data['picture']}'>
+                    <p class='text-center mt-0 mb-3'>
+                        <button class='btn btn-outline-danger py-0 px-3 mx-2 w-25' type='submit'>YES, please</button>
+                        <a href='../dashBoard.php'><span class='btn btn-outline-primary py-0 px-3 mx-2 w-25'>NO, keep it</span></a>
+                    </p>
+                </form> 
                 </div>
                 
-                <article class='my-3 mx-5 card' style='width:25rem'>
-                    <div class='card-body row'>
-                        <div class='col-sm-12 col-md-5'>
-                            <img class='img-fluid' src='../pictures/" .$data["picture"] . "'>
-                        </div>
-                        <div class='col-sm-12 col-md-7'>
-                            <h1 class='card-title display-5 fw-bold mt-3 mb-4 text-center'>{$data['name']} </h1>
+                <div class='card mb-3 mx-auto w-75' style='min-width: 25vw;'>
+                <div class='row g-0'>
+                    <div class='col-sm-12 col-md-5 align-self-center'>
+                        <div><img class='img-fluid align-middle' src='../pictures/" .$data['picture'] . "'></div>
+                    </div>
+                    <div class='col-sm-12 col-md-7'>
+                        <article class='card-body'>
+                            <h1 class='card-title display-5 fw-bold mt-3 mb-2 text-center'>{$data['name']} </h1>
 
                             <h3 class='card-subtitle text-secondary text-center mb-3'>{$data['breed']}</h3><hr>
 
@@ -43,25 +54,14 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
 
                             <p class='card-text mt-0 mb-0'><small class='text-muted'>SIZE: </small><i>{$data['size']} cm</i></p>
 
-                            <p class='card-text mt-0 mb-5'><small class='text-muted'>HOBBIES: </small><i>{$data['hobbies']}</i></p>
-
-                            <p class='card-text text-center my-3'><small class='text-muted'><i class='bi bi-geo-alt-fill fs-3 text-dark'></i> </small><i>{$data['location']}</i></p>
-                        </div>
+                            <p class='card-text mt-0 mb-3'><small class='text-muted'>HOBBIES: </small><i>{$data['hobbies']}</i></p>
+                        </article>
                     </div>
-
-                    <div class='card-footer pt-3 m-0'>
-
-                    <form class='m-0 p-0' action='actions/a_delete.php' method='POST'>
-                        <input type='hidden' name='animal_id' value='{$data["animal_id"]}'>
-                        <input type='hidden' name='picture' value='{$data["picture"]}'>
-                        <p class='text-center m-0'>
-                            <button class='btn btn-outline-danger py-0 px-3 mx-2 w-50' type='submit'>YES, please</button>
-                            <a href='index.php'><span class='btn btn-outline-primary py-0 px-3 mx-2 w-50'>NO, keep it</span></a>
+                    <div class='card-footer pt-1 m-0'>
+                        <p class='card-text text-center my-0'><small class='text-muted'><i class='bi bi-geo-alt-fill fs-3 text-dark'></i> </small><i>{$data['location']}</i></p>
                     </div>
-                        </p>
-                    </form> 
-                    
-                </article>";
+                </div>
+                </div>";
             }
         } else {
         echo "<div class='alert alert-info m-5 p-3 text-dark text-center fs-4'><h1 class='mt-4 mb-3 pb-0'>SORRY!</h1>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     ?>
     <!-- [MAIN] -->
     <main class="bg-dark">
-        <section class="container-fluid m-0 mx-auto py-5 w-75">
+        <section class="container-fluid m-0 mx-auto py-5">
         
         <!-- [Here comes a selected item to be deleted or an Message] -->
             <?= $delete?>

@@ -36,8 +36,7 @@ mysqli_close($connect);
    }
 
    .userImage{
-   width: 100px;
-   height: 100px;
+   width: 25vw;
    }
 
    .hero {
@@ -77,7 +76,7 @@ mysqli_close($connect);
       </p>
       
       <div class="col-4 justify-content-center text-center ">    
-         <img class="userImage my-2" src="pictures/avatar.png" alt="<?php echo $row['first_name']; ?>">
+         <img class="userImage my-2" src="pictures/<?php echo $row['picture']; ?>" alt="<?php echo $row['first_name']; ?>">
          <p class="text-center text-dark fw-bolder">User</p>
       </div>
       <div class="col-6 text-center align-self-center">

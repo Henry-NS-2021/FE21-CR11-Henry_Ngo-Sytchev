@@ -1,10 +1,10 @@
 <?php
     session_start();
 
-    // if (isset($_SESSION['user']) != "") {
-    //    header("Location: ../../home.php");
-    //    exit;
-    // }
+    if (isset($_SESSION['user']) != "") {
+       header("Location: ../../home.php");
+       exit;
+    }
     
     if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
        header("Location: ../../index.php");
@@ -31,7 +31,7 @@
             ($_POST["picture"] == "animal_avatar.png")?: unlink("../../pictures/$_POST[picture]");          
             $sql = "UPDATE animals SET name = '$name', breed = '$breed', age = '$age', size = '$size', hobbies = '$hobbies', location = '$location', description = '$description', picture = '$picture->fileName' WHERE animal_id = '{$id}'";
         }else{
-            $sql = "UPDATE animals SET name = '$name', breed = '$breed', age = '$age', size = '$size', hobbies = '$hobbies', location = '$location', description = '$description' WHERE animal_id = '{$id}'";
+            $sql = "UPDATE animals SET name = '$name', breed = '$breed', age = '$age', size = '$size', hobbies = '$hobbies', location = '$location', description = '$description' WHERE animal_id = '{$id}';";
         }    
         if (mysqli_query($connect, $sql) === TRUE) {
             $class = "success";
@@ -87,8 +87,8 @@
             <div class="alert alert-<?php echo $class;?> text-center"  role="alert">
                 <p class="fs-3 mt-2 mb-5"><?php echo ($message) ?? ''; ?></p>
                 <p><?php echo ($uploadError) ?? ''; ?></p>
-                <a href='../update.php?id=<?=$id;?>' ><button class="btn btn-warning py-0 w-100"  type='button'>Back </button></a>
-                <a href='../../dashBoard.php' ><button class="btn btn-outline-dark py-0 w-100 mt-1"  type='button'>Dashboard </button></a>
+                <a href='../update.php?id=<?=$id;?>' ><button class="btn btn-warning py-0 mx-auto w-50"  type='button'>Back </button></a>
+                <a href='../../dashBoard.php' ><button class="btn btn-outline-dark py-0 mx-auto w-50 mt-1"  type='button'>Dashboard </button></a>
            </div>
        </div>
     </main>

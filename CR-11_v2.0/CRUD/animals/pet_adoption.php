@@ -8,6 +8,7 @@ session_start();
     }
 
     $sorry = "";
+    $adoption = "";
     
     if( @($_GET["id"]) && @($_GET["user_id"]) ){
         // save user and pet IDs from the link
@@ -67,10 +68,12 @@ session_start();
             }
 
         } else {
-            $notification = "<div class='alert alert-danger text-danger border border-3 border-danger text-center py-5 mt-5 mb-3 mx-auto w-100'>
-                    <h1 class='mb-3'><i class='bi bi-emoji-frown fs-3'></i> Sorry</h1>                
+            $notification = "<div class='alert alert-danger text-danger border border-3 border-danger text-center pt-5 pb-2 mt-5 mb-3 mx-auto w-100'>
+                    <h1 class='mb-3'><i class='bi bi-emoji-frown fs-2'></i> Sorry</h1>
+                    <hr class='bg-danger py-1 mb-4 mx-auto w-75'>            
                     <p>This animal <b>has already been adopted</b>.<br><br> Have another look around. You might find another companion for you.
                     </p>
+                    <a class='text-decoration-none' href='index.php'><p class='btn btn-danger mt-4 mx-auto py-0 w-25'>Return to Pet List</p>
                 </div>";
         }
 

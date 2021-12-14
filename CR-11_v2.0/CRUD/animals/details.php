@@ -24,7 +24,7 @@ session_start();
         if(mysqli_num_rows($query) == 1){
             foreach($result as $row){
                 $display = "
-                <div class='card my-5 mx-auto' style='width: 21rem;'>
+                <div class='card my-5 mx-auto' style='min-width: 18rem; max-width: 40rem;'>
                     <img class='card-img-top img-fluid' src='../pictures/{$row["picture"]}' alt='Card image cap'>
                     <div class='card-body'>
                         <h3 class='card-title text-center mt-3'>{$row["name"]}

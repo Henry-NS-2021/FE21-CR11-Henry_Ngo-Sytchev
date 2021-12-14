@@ -136,7 +136,8 @@ mysqli_close($connect);
         <div class="container bg-light rounded-3 text-dark border border-success border-3 w-50 py-5">
             <!-- [FORM] -->
             <form class="w-auto rounded mx-auto shadow py-5 px-3 border" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
-                    <h2 class="display-5 mb-2 mt-0 text-center text-success">Sign Up.</h2>
+                    <div class="text-center  mb-2"><i class="bi bi-person-badge text-success display-1"></i></div>
+                    <h2 class="display-5 mb-2 mt-0 text-center text-success">Sign Up</h2>
                     <hr class="bg-success py-1 mb-5 mx-auto w-50">
                     <?php
                     if (isset($errMSG)) {
