@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 14. Dez 2021 um 12:06
+-- Erstellungszeit: 16. Dez 2021 um 13:57
 -- Server-Version: 10.4.21-MariaDB
 -- PHP-Version: 8.0.12
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Datenbank: `fswd14_cr11_petadoption_henryngosytchev`
 --
+CREATE DATABASE IF NOT EXISTS `fswd14_cr11_petadoption_henryngosytchev` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `fswd14_cr11_petadoption_henryngosytchev`;
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,57 @@ INSERT INTO `animals` (`animal_id`, `name`, `breed`, `picture`, `location`, `des
 (12, 'Jolly', 'Chausie Cat', 'chausie.jpg', 'Familienplatz 1', '\"If the Chausie cat reminds you of an extra-large Abyssinian, you\'re on the right track! These incredible felines were developed by crossing jungle cats – also known as swamp cats or reed cats – from Southeast Asia with domesticated Abyssinians.\r\n\r\nWeighing in at up to 30 pounds, Chausies are among the largest domesticated cats in existence. As a hybrid, every Chausie cat is a unique individual, with a big personality to matChausie it\'s size. Chausie cats develop strong bonds with their families and do not like to be left alone.\"\r\n', 26.8, 1, '- Hunting mice and insects\r\n- Climing trees\r\n'),
 (13, 'Walim', 'Bombay Cat', 'bombay.jpg', 'Familienplatz 1', 'Stunning looks and an intriguing personality make the Bombay cat a charming addition to any household. These medium-sized shorthair cats are absolutely gorgeous thanks to their pure black coats and their brilliant copper-colored eyes.\r\n', 34.2, 4.2, 'Playing with anything what rolls\r\n');
 
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `pet_adoption`
+--
+
+CREATE TABLE `pet_adoption` (
+  `adoption_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `pet_id` int(11) NOT NULL,
+  `adoption_date` date NOT NULL,
+  `adoption_time` time NOT NULL,
+  `status` enum('adopted','available') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(5) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone_number` int(15) NOT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `user_status` enum('adm','user') NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `address`, `picture`, `password`, `user_status`) VALUES
+(1, 'Gary', 'Holmes', 'gholmes@mail.at', 675602558, 'Passeti Strasse 32/2/8', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(2, 'Helmut', 'Kohler', 'hkohler@mail.at', 660502165, 'Handelskai 9/4/36', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(3, 'Joshua', 'Smith', 'jsmith@mail.at', 665502465, 'Am Tabor 63/7', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(4, 'Laura', 'Leroux', 'lleroux@mail.at', 669653265, 'Wienzeile 5/14', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(5, 'Aleksandar', 'Vuk', 'avuk@mail.at', 675978546, 'Kangranerweg 11a', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(6, 'Viktoria', 'Retti', 'vretti@mail.at', 685055232, 'Kettenbruekegasse 2/2/21', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(7, 'Alina', 'Comu', 'acomu@mail.at', 674856584, 'Innsbruker Alee 4b', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(8, 'Jaqueline', 'Cimpinard', 'jcimpinard@mail.at', 665555886, 'Meidlingerstrasse 241/5', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(9, 'Malik', 'Wahed', 'mwahed@mail.at', 662565696, 'Grinzingergasse 51b/1/6', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(10, 'Yasmina', 'Alabov', 'yalabov@mail.at', 650223589, 'Am Spitz 6/4', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(12, 'John', 'Wick', 'jw@user.com', 2147483647, 'none', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'user'),
+(13, 'Harry', 'Potter', 'hp@magic.mg', 1520, 'Hogwards Northern Tower, 4th Floor', 'avatar.png', '96cae35ce8a9b0244178bf28e4966c2ce1b8385723a96a6b838858cdd6ca0a1e', 'adm');
+
 --
 -- Indizes der exportierten Tabellen
 --
@@ -69,6 +122,20 @@ ALTER TABLE `animals`
   ADD PRIMARY KEY (`animal_id`);
 
 --
+-- Indizes für die Tabelle `pet_adoption`
+--
+ALTER TABLE `pet_adoption`
+  ADD PRIMARY KEY (`adoption_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `pet_id` (`pet_id`);
+
+--
+-- Indizes für die Tabelle `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
@@ -77,6 +144,29 @@ ALTER TABLE `animals`
 --
 ALTER TABLE `animals`
   MODIFY `animal_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT für Tabelle `pet_adoption`
+--
+ALTER TABLE `pet_adoption`
+  MODIFY `adoption_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT für Tabelle `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints der exportierten Tabellen
+--
+
+--
+-- Constraints der Tabelle `pet_adoption`
+--
+ALTER TABLE `pet_adoption`
+  ADD CONSTRAINT `pet_adoption_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `pet_adoption_ibfk_2` FOREIGN KEY (`pet_id`) REFERENCES `animals` (`animal_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
