@@ -35,7 +35,8 @@
         }    
         if (mysqli_query($connect, $sql) === TRUE) {
             $class = "success";
-            $message = "The record was successfully updated" ;
+            $message = "<h2 class='display-6 my-3 fw-bold'>Notification</h2><hr class='bg-success py-1 mb-4 mx-auto w-75'>
+            <p>The record was successfully updated</p>" ;
             $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'' ;
         } else {
             $class = "danger";
@@ -65,34 +66,23 @@
     <meta name="author" content="Henry Ngo-Sytchev">
     <!-- [BOOTSTRAP] -->
     <?php require_once("../../components/bootstrap.php")?>
-    <title>Code Review 11: Adopt a pet</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../styles/style.css">
+    <title>Code Review 11: Record updated</title>
 </head>
 <body>
-    <!-- [NAVBAR] -->
-    <?php 
-    $url="../";
-    $img_url="../../";
-    require_once("../../components/navbar.php"); 
-    ?>
-   
+    <!-- [MAIN] -->
     <main class="bg-dark my-0">
     <!-- CHECK THIS BLOCK -->
     <div class="container py-5 m-0 mx-auto w-75">
-            <div class="my-3">
-                <div class="h2 display-1 py-3 mt-0 text-center text-warning">
-                    <h1 class="mt-4">Update request response</h1><hr>
-                </div>
-                <hr>
-           </div>
-            <div class="alert alert-<?php echo $class;?> text-center"  role="alert">
+            <div class="bg-none border border-<?=$class;?> text-<?=$class;?> text-center pt-2 pb-5 mb-5"  role="alert">
                 <p class="fs-3 mt-2 mb-5"><?php echo ($message) ?? ''; ?></p>
                 <p><?php echo ($uploadError) ?? ''; ?></p>
-                <a href='../update.php?id=<?=$id;?>' ><button class="btn btn-warning py-0 mx-auto w-50"  type='button'>Back </button></a>
-                <a href='../../dashBoard.php' ><button class="btn btn-outline-dark py-0 mx-auto w-50 mt-1"  type='button'>Dashboard </button></a>
+                <a href='../../dashBoard.php' ><button class="btn btn-light border rounded-3 py-0 mt-3 mb-2 mx-auto w-50"  type='button'>Dashboard </button></a>
+                <a href='../update.php?id=<?=$id;?>' ><button class="btn btn-outline-warning py-0 mx-auto w-50"  type='button'>Back </button></a>
            </div>
        </div>
     </main>
-    <!-- [FOOTER] -->
-    <?php require_once("../../components/footer.php"); ?>
+
 </body>
 </html>

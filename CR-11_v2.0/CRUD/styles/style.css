@@ -1,0 +1,19 @@
+input {
+  width: 100%;
+}
+
+main {
+  min-height: 100vh;
+  background: #212529;
+}
+
+.label {
+  font-weight: lighter;
+  color: lightgrey;
+}
+
+th {
+  text-align: left;
+  color: whitesmoke;
+}
+/*# sourceMappingURL=style.css.map */

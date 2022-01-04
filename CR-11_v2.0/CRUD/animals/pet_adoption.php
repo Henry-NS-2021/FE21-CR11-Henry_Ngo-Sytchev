@@ -28,9 +28,10 @@ session_start();
             $sql_adoption = "INSERT INTO pet_adoption(user_id, pet_id, adoption_date, adoption_time, status) VALUES ($user_id, $pet_id, now(), now(), 'adopted');";
             $query_adoption = mysqli_query($connect, $sql_adoption);
 
-            $notification = "<div class='alert alert-success text-success border border-3 border-success text-center py-5 mt-5 mb-3 mx-auto w-100'>
-                    <h1 class='mb-3'><i class='bi bi-emoji-smile fs-3'></i> Congratulations</h1>                
-                    <p>You have just <b>adopted</b> a new companion.
+            $notification = "<div class='alert-success
+             border border-success text-success text-center rounded-3 pt-2 pb-2 mb-5 mx-auto w-75'>
+                    <h2 class='display-6 my-3 fw-bold'><i class='bi bi-emoji-smile fs-3'></i> Congratulations</h2><hr class='bg-success py-1 mb-4 mx-auto w-75'>            
+                    <p class='fs-5 text-success'>You have just <b>adopted</b> a new companion.
                     </p>
                 </div>";
 
@@ -50,9 +51,9 @@ session_start();
                             <span class='card-subtitle text-secondary'> | {$row["breed"]}</span></h3>
                             <p class='text-center fs-1 text-danger fw-bold mt-3 mb-2'><i class='bi bi-suit-heart-fill fs-3'></i> {$row["status"]}</p>
                             </p>
-                            <hr class='bg-success py-1 mt-1'>
+                            <hr class='bg-dark py-1 mt-1'>
                             <p class='text-center my-0'><b>{$row["name"]}</b> is looking forward to meeting you at:<br><i class='bi bi-geo-alt-fill text-success'></i> {$row["location"]}<br>
-                            <hr class='bg-success py-1 my-2'>
+                            <hr class='bg-dark py-1 my-2'>
                             <hr class='bg-dark mt-0 mb-3'>
                             <p class='text-center py-0 m-0'>
                                 <small class='p-0 m-0'>
@@ -63,17 +64,18 @@ session_start();
                     </div>
                     ";
                 }
+                // header("refresh:3; url=index.php");
             } else {
-                header("error.php");
+                header("refresh:0; url=error.php");
             }
 
         } else {
             $notification = "<div class='alert alert-danger text-danger border border-3 border-danger text-center pt-5 pb-2 mt-5 mb-3 mx-auto w-100'>
-                    <h1 class='mb-3'><i class='bi bi-emoji-frown fs-2'></i> Sorry</h1>
+                    <h2 class='mb-3'><i class='bi bi-emoji-frown fs-2'></i> Sorry</h2>
                     <hr class='bg-danger py-1 mb-4 mx-auto w-75'>            
-                    <p>This animal <b>has already been adopted</b>.<br><br> Have another look around. You might find another companion for you.
+                    <p class='fs-5'>This animal <b>has already been adopted</b>.<br> Have another look around. You might find another companion for you.
                     </p>
-                    <a class='text-decoration-none' href='index.php'><p class='btn btn-danger mt-4 mx-auto py-0 w-25'>Return to Pet List</p>
+                    <a class='text-decoration-none' href='index.php'><p class='btn btn-danger mt-4 mx-auto py-0 w-50'>Return to Pet List</p>
                 </div>";
         }
 
@@ -110,7 +112,7 @@ session_start();
         }
 
     </style>
-    <title>Code Review 11: Adopt a pet</title>
+    <title>Code Review 11: Adoption</title>
 </head>
 <body>
         <!-- [NAVBAR] -->

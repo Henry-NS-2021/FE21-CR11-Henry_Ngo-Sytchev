@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// if (isset($_SESSION['user']) != "") {
-//    header("Location: ../../home.php");
-//    exit;
-// }
+if (isset($_SESSION['user']) != "") {
+   header("Location: ../../home.php");
+   exit;
+}
 
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
    header("Location: ../../index.php");
@@ -31,8 +31,10 @@ if ($_POST){
 
    if (mysqli_query($connect, $sql) === true) {
        $class = "success";
-       $message = "<p class='my-2 fs-4'>The entry below was successfully created</p> <br>
-            <table class='table table-success table-striped border border-2 border-light rounded w-100 m-auto'>
+       $message = "<h2 class='display-6 my-3 fw-bold'>Congratulations</h2>
+       <hr class='bg-success py-1 mb-4 mx-auto w-75'>
+       <p class='my-2 fs-4'>The entry below was successfully created!</p> <br>
+            <table class='table table-success table-striped border border-2 border-light align-middle rounded w-100 m-auto'>
             <tr>
             <th>PICTURE</th><td> <img class='img-fluid' width='80vw' src='../../pictures/{$picture->fileName}'></td>
             </tr>
@@ -76,36 +78,27 @@ if ($_POST){
    <head>
         <meta charset="UTF-8">
         <meta name="author" content="Henry Ngo-Sytchev">
-        <title>Code Review 11: Adopt a pet</title>
         <!-- [BOOTSTRAP] -->
         <?php require_once ("../../components/bootstrap.php")?>
+        <!-- CSS -->
+        <link rel="stylesheet" href="../../styles/style.css">
+        <title>Code Review 11: Record created</title>
     </head>
    <body>
-       <!-- [NAVBAR] -->
-       <?php 
-        $url="../";
-        $img_url="../../";
-        require_once("../../components/navbar.php"); 
-        ?>
-
     <main class="bg-dark h-100">
         <!-- [MESSAGE] -->
         <div class="container py-5">
             <div class="my-3">
-            <div class="h2 display-1 py-3 mt-0 text-center text-warning">
-                <h1 class="mt-4">Create request response</h1><hr>
-            </div>
-
+                <div class="h2 display-1 py-3 mt-0 text-start text-warning">
+                </div>
                 <hr>
-           </div>
+            </div>
             <div class="alert alert-<?=$class;?> text-center my-0 mx-auto w-75"  role="alert">
                <p><?php echo ($message) ?? ''; ?></p>
                <p><?php echo ($uploadError) ?? '' ; ?></p>
-                <a href='../index.php'><button class="btn btn-outline-dark mt-3 mb-2 py-0 px-5 fw-bold w-100"  type='button'>Home</button></a>
+                <a href='../../dashBoard.php'><button class="btn btn-outline-dark mt-3 mb-2 py-0 px-5 fw-bold mx-auto w-50"  type='button'>Dashboard</button></a>
             </div>
        </div>
     </main>
-    <!-- [FOOTER] -->
-    <?php require_once("../../components/footer.php"); ?>
    </body>
 </html>

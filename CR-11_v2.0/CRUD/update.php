@@ -57,7 +57,7 @@ if (isset($_POST["submit"])) {
        $class = "alert alert-success";
        $message = "The record was successfully updated";
        $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
-       header("refresh:3;url=update.php?id={$id}");
+       header("refresh:2;url=dashBoard.php");
    } else {
        $class = "alert alert-danger";
        $message = "Error while updating record : <br>" . $connect->error;
@@ -74,74 +74,73 @@ mysqli_close($connect);
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit User</title>
-  <!-- BOOTSTRAP -->
-  <?php require_once 'components/bootstrap.php'?>
-  <style type= "text/css">
-      fieldset {
-           margin: auto;
-           margin-top: 100px;
-           width: 60% ;
-       }
-       .img-thumbnail{
-           width: 70px !important;
-           height: 70px !important;
-       }
-
-       main{
-           height: 100vh;
-       }
-  </style>
+   <!-- BOOTSTRAP -->
+   <?php require_once 'components/bootstrap.php'?>
+   <!-- CSS -->
+   <link rel="stylesheet" href="styles/style.css">
+   <title>Update Profile</title>
 </head>
 <body>
 
 <!-- [MAIN] -->
 <main class="bg-dark">
 <div class="container w-75 py-5 rounded-3">
+    <!-- notification after updating the profile -->
    <div class="<?php echo $class; ?>" role="alert">
        <p><?php echo ($message) ?? ''; ?></p>
        <p><?php echo ($uploadError) ?? ''; ?></p>       
    </div>
-       <h2 class="text-warning text-center">Update</h2>   
-       <hr class="bg-warning py-1 mb-3 mx-auto w-75">    
-       <p class="text-center"><img class='rounded-circle border border-3 border-warning' height="200px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"></p>
+
+ 
+       <p class="text-center"></p>
+       <!-- form -->
        <form class="rounded-3" method="post" enctype="multipart/form-data">
-           <table class="table table-striped table-light rounded-3">
+           <div class="table-responsive">
+           <table class="table table-striped table-muted rounded-3">
+                <tr>
+                    <td colspan="2"><h2 class="display-3 my-5 text-center text-white my-4">Update Profile<br>
+                    <img class='rounded-circle mt-5 mb-0 border border-3 border-warning' height="175px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"></h2>
+                    </td>
+                </tr>
                <tr>
                    <th>First Name</th>
-                   <td><input class="form-control" type="text"  name="first_name" placeholder ="First Name" value="<?php echo $f_name ?>"  /></td>
+                   <td><input class="form-control" type="text"  name="first_name" placeholder ="First Name" value="<?php echo $f_name ?>"></td>
                </tr>
                <tr>
                    <th>Last Name</th>
-                   <td><input class="form-control" type= "text" name="last_name"  placeholder="Last Name" value ="<?php echo $l_name ?>" /></td>
+                   <td><input class="form-control" type= "text" name="last_name"  placeholder="Last Name" value ="<?php echo $l_name ?>"></td>
                </tr>
                <tr>
                    <th>Email</th>
-                   <td><input class="form-control" type="email" name="email" placeholder= "Email" value= "<?php echo $email ?>" /></td>
+                   <td><input class="form-control" type="email" name="email" placeholder= "Email" value= "<?php echo $email ?>"></td>
                </tr>
                <tr>
                    <th>Phone Number</th>
                    <td>
-                    <input class='form-control mb-1 py-1' placeholder="Phone number" type="text"  name="phone_number" value ="<?php echo $phone_number ?>"/>                   
+                    <input class='form-control mb-1 py-1' placeholder="Phone number" type="text"  name="phone_number" value ="<?php echo $phone_number ?>">                   
                 </td>
                </tr>
                <tr>
                    <th>Address</th>
                    <td>
-                    <input class='form-control mb-1 py-1' placeholder="Address" type="text"  name="address" value ="<?php echo $address ?>"/>
+                    <input class='form-control mb-1 py-1' placeholder="Address" type="text"  name="address" value ="<?php echo $address ?>">
                     </td>
                </tr>
                <tr>
                    <th>Picture</th>
-                   <td><input class="form-control" type="file" name="picture" /></td>
+                   <td><input class="form-control" type="file" name="picture"></td>
                </tr>
                <tr>
-                   <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>" />
-                   <input type= "hidden" name= "picture" value= "<?php echo $picture ?>" />
-                   <td><a href= "<?php echo $backBtn?>"><button class="btn btn-warning py-0 px-3 w-100" type="button">Back</button></a></td>
-                   <td class="text-center"><button name="submit" class="btn btn-success py-0 w-75" type= "submit">Save Changes</button></td>
+                   <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>">
+                   <input type= "hidden" name= "picture" value= "<?php echo $picture ?>">
+                   <td></td>
+                   <td class="text-center py-3">
+                        <button class="btn btn-success py-3 mb-2 w-100" name="submit"  type= "submit">Save Changes</button>
+                        <a href= "<?php echo $backBtn?>"><button class="btn btn-outline-warning py-0 px-3 w-100" type="button">Back</button></a>
+                    </td>
                </tr>
            </table>
+           </div>
        </form>   
 </div>
 </main>

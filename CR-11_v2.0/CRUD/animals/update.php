@@ -57,46 +57,20 @@
     <!-- [BOOTSTRAP] -->
     <?php require_once("../components/bootstrap.php")?>
     <!-- CSS -->
-    <style>
-        .label {
-            font-weight: lighter;
-            color: lightgrey;
-        }
-        /* PREWORK CSS */
-        fieldset  {
-               margin: auto;
-               margin-top: 5vh;
-               width: auto;
-        }  
-
-        .img-thumbnail{
-            width: 70px !important;
-            height: 70px !important;
-        }    
-    </style>
-    <title>Code Review 11: Adopt a pet</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Code Review 11: Update animal record</title>
 </head>
-<body>
-    <!-- [NAVBAR] -->
-    <?php 
-    $url="../";
-    $img_url="../";
-    require_once("../components/navbar.php"); 
-    ?>
-    
+<body> 
     <!-- [MAIN] -->
     <main class="bg-dark">
     <!-- [FORM] -->
-    <legend  class="h2 display-1 py-3 mt-0 text-center text-warning">
-        <h1 class="mt-4">Update request <img class="img-thumbnail rounded-circle" src="../pictures/<?php echo $picture; ?>" alt= "<?php echo $name ?>">
-    </h1>
-    <hr>
-    </legend>
     <form class="w-75 mx-auto" method="POST" action="actions/a_update.php" enctype="multipart/form-data" class="rounded-3 bg-dark mx-5">
-        
+        <!-- table -->
+        <div class="table-responsive">
         <table class="table mx-0 mb-0 text-white fs-6">
                 <tr>
-                    <td colspan="2"><h2 class="display-1 my-5 text-center text-white my-4">Update Animal Record</h2>
+                    <td colspan="2"><h2 class="display-3 my-5 text-center text-white my-4">Update Animal Record<br>
+                    <img class="img-fluid rounded-circle mt-4 mb-0" width="175px" src="../pictures/<?php echo $picture; ?>" alt= "<?php echo $name ?>"></h2>
                     </td>
                 </tr>
                 <tr>
@@ -138,29 +112,28 @@
                     <textarea class="form-control" name="description" rows="8" value="<?= $description?>" placeholder="Leave the description of the pet in here..."></textarea>
                     </td>
                 </tr>
-                <tr>
+                <tr class="d-none">
                     <td>
-                    <input type="hidden"   name="id"   value="<?= $id ?>">
+                        <input class="form-control" type="hidden" name="id" value="<?= $id ?>">
 
-                    <input type="hidden" name="picture" value="<?= $picture ?>">
+                        <input class="form-control" type="hidden" name="picture" value="<?= $picture ?>">
                     </td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="m-0 p-0">
                     </td>
                     <td>
-                        <div>
-                            <input class="btn btn-outline-success px-5 py-3 mb-2 mt-4 fw-bold w-100" type="submit" name="name" placeholder="Name" value="Save changes">
-                        </div>
+                        <input class="btn btn-outline-success px-5 py-3 mb-2 mt-4 fw-bold w-100" type="submit" value="Save changes">
+                        
                         <a href="../dashBoard.php">
                         <p class="btn btn-outline-light py-0 mb-2 fw-bold w-100">Dashboard</p>
                         </a>
                     </td>
                 </tr>
             </table>
+            </div>
     </form>
     </main>
-    <!-- [FOOTER] -->
-    <?php require_once("../components/footer.php"); ?>
 </body>
 </html>

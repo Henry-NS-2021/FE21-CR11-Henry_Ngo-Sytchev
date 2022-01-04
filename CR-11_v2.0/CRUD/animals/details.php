@@ -16,7 +16,7 @@ session_start();
     
     if(@$_GET["id"]){
         $id = $_GET["id"];
-        $sql = "SELECT * FROM animals WHERE animal_id = '{$id}'";
+        $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id WHERE animal_id = '{$id}'";
         $query = mysqli_query($connect, $sql);
         $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         $display = "";
@@ -42,7 +42,7 @@ session_start();
                         <hr>
                         <p class='card-text text-center mb-0'>
                             <small'>
-                            <a class='btn btn-primary text-light p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
+                            <a class='" . ($row['status'] == 'adopted'? 'd-none': '') . " btn btn-primary text-light p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
                             </small>
                         </p>
                         <p class='text-center p-0 m-0'>

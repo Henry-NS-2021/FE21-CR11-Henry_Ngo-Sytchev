@@ -1,26 +1,22 @@
 <?php
     session_start();
     require_once("../components/db_connect.php");
-
-    // if (isset($_SESSION['user']) != "") {
-    // header("Location: ../home.php");
-    // exit;
-    // }
  
     if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     header("Location: ../index.php");
     exit;
     }
 
-   $sql = "SELECT * FROM animals WHERE age > 8 ORDER BY age DESC;";
+   $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id WHERE age > 8 ORDER BY age DESC;";
    $query = mysqli_query($connect, $sql);
    $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
    $seniors = "";
    
    if(mysqli_num_rows($query) > 0){
        foreach($result as $row){
+        //    diplays only non-adopted pets in the seniors' list
            $seniors .= "
-           <tr class='align-middle text-center border-top border-bottom border-secondary'>
+           <tr class='" . ($row['status'] == 'adopted'? 'd-none': '') . " align-middle text-center border-top border-bottom border-secondary'>
                <td>
                <img class='img-fluid' width='130px' src='../pictures/{$row["picture"]}'>
                </td>
@@ -37,8 +33,8 @@
        }
    } else {
        $seniors = "<tr>
-                <td class='text-center' colspan='5'>
-                Sorry, there are currently no available records.
+                <td class='text-center' colspan='6'>
+                Sorry, there are currently no Senior pets at the moment.
                 </td>
             </tr>";
    }
@@ -59,12 +55,8 @@
     <meta name="author" content="Henry Ngo-Sytchev">
     <!-- [BOOTSTRAP] -->
     <?php require_once("../components/bootstrap.php")?>
-        <!-- [CSS] -->
-        <style>
-        main{
-           min-height: 100vh;
-       }
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Adopt a pet - Seniors</title>
 </head>
 <body>
@@ -79,9 +71,11 @@
     <!-- [MAIN] -->
     <main class="bg-dark py-5">
     <div class="container mb-5">
-    <h1 class="text-center text-light fw-light display-4">Our Vet* Pets</h1>
-    <p class="text-center text-muted border-top border-secondary mx-auto w-50"><sub>*To this list belong Pets above 8 years of age</sub></p>
-        <hr class="bg-success py-1 mb-5">
+    <h1 class="text-center text-light fw-light display-4 mb-0">Our Vet* Pets</h1>
+    <p class="text-center text-muted text-decoration-overline lh-1 mt-0 mb-4 mx-auto w-50"><sub>*To this list belong Pets above 8 years of age</sub></p>
+        <hr class="bg-success py-1 mb-5 mx-auto w-75">
+        <!-- table -->
+        <div class="table-responsive">
         <table class="table table-secondary table-striped border my-0 mx-auto w-75">
             <thead class="table-dark text-white text-center fw-light">
                 <tr class="align-middle">
@@ -97,6 +91,7 @@
                 <?= $seniors ?>
             </tbody>
         </table>
+        </div>
     </div>
     </main>
 
