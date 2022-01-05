@@ -16,4 +16,21 @@ th {
   text-align: left;
   color: whitesmoke;
 }
+
+#dashboard_body {
+  background: black url("../pictures/layout_img/bg.jpeg") center center;
+  background-size: cover;
+}
+
+#user_img {
+  width: 50px;
+}
+
+#admin_img {
+  width: 80px;
+}
+
+#admin_panel {
+  width: 100vw;
+}
 /*# sourceMappingURL=style.css.map */

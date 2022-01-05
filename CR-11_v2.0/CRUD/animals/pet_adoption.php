@@ -104,14 +104,8 @@ session_start();
     $url="../";
     require_once("../components/bootstrap.php");
     ?>
-    <!-- [CSS] -->
-    <style>
-        main{
-            min-height: 100vh;
-            padding: 3% 15%;
-        }
-
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../styles/style.css">
     <title>Code Review 11: Adoption</title>
 </head>
 <body>

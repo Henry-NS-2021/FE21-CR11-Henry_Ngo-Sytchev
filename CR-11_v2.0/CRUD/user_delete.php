@@ -52,29 +52,15 @@ mysqli_close($connect);
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Delete User</title>
    <!-- BOOTSTRAP -->
    <?php require_once 'components/bootstrap.php'?>
-   <style type= "text/css">
-      main{
-         height: 100vh;
-      }
-      
-      fieldset {
-           margin: auto;
-           margin-top: 100px;
-           width: 70% ;
-       }    
-
-       .img-thumbnail{
-           width: 70px !important;
-           height: 70px !important;
-       }    
-  </style>
+   <!-- CSS -->
+   <link rel="stylesheet" href="styles/style.css">
+   <title>Delete User</title>
 </head>
-<body>
+<body id="dashboard_body">
    <!-- [MAIN] -->
-   <main>
+   <main class="bg-transparent">
       <div class="<?php echo $class; ?>" role="alert">
             <p><?php echo ($message) ?? ''; ?></p>           
       </div>

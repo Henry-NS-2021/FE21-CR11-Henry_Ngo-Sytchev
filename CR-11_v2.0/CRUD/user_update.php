@@ -27,6 +27,7 @@ if (isset($_GET['id'])) {
        $data = mysqli_fetch_assoc($result);
        $f_name = $data['first_name'];
        $l_name = $data['last_name'];
+       $user_status = $data['user_status'];
        $email = $data['email'];
        $phone_number = $data['phone_number'];
        $address = $data['address'];
@@ -39,9 +40,10 @@ $class = 'd-none';
 if (isset($_POST["submit"])) {
    $f_name = $_POST['first_name'];
    $l_name = $_POST['last_name'];
+   $user_status = $_POST['user_status'];
    $email = $_POST['email'];
-   $phone_number = $data['phone_number'];
-   $address = $data['address'];
+   $phone_number = $_POST['phone_number'];
+   $address = $_POST['address'];
    $id = $_POST['id'];
    //variable for upload pictures errors is initialized
    $uploadError = '';    
@@ -49,18 +51,23 @@ if (isset($_POST["submit"])) {
    $picture = $pictureArray->fileName;
    if ($pictureArray->error === 0) {      
        ($_POST["picture"] == "avatar.png") ?: unlink("pictures/{$_POST["picture"]}");
-       $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email', phone_number = '$phone_number', address = '$address', picture = '$pictureArray->fileName' WHERE id = {$id}";
+       $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', user_status = '$user_status', email = '$email', phone_number = '$phone_number', address = '$address', picture = '$pictureArray->fileName' WHERE id = {$id}";
    } else {
-       $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name', email = '$email', phone_number = '$phone_number', address = '$address' WHERE id = {$id}";
+       $sql = "UPDATE users SET first_name = '$f_name', last_name = '$l_name',  user_status = '$user_status', email = '$email', phone_number = '$phone_number', address = '$address' WHERE id = {$id}";
    }
+
    if (mysqli_query($connect, $sql) === true) {    
-       $class = "alert alert-success";
-       $message = "The record was successfully updated";
+       $class = "alert alert-light border border-3 border-success text-success";
+       $message = "
+       <hr class='bg-success py-1 mb-4 w-100'>
+       <p class='my-2 fs-4'><i class='bi bi-check-circle'></i> The record was successfully updated</p>";
        $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
        header("refresh:2;url=dashBoard.php");
    } else {
-       $class = "alert alert-danger";
-       $message = "Error while updating record : <br>" . $connect->error;
+       $class = "alert alert-light border border-3 border-danger text-danger";
+       $message = "
+       <hr class='bg-danger py-1 mb-4 w-100'>
+       <p class='my-2 fs-4'><i class='bi bi-x-circle'></i> Error while updating record :</p><p>" . $connect->error . "</p>";
        $uploadError = ($pictureArray->error != 0) ? $pictureArray->ErrorMessage : '';
        header("refresh:3;url=update.php?id={$id}");
    }
@@ -80,10 +87,10 @@ mysqli_close($connect);
    <link rel="stylesheet" href="styles/style.css">
    <title>Update Profile</title>
 </head>
-<body>
+<body id="dashboard_body">
 
 <!-- [MAIN] -->
-<main class="bg-dark">
+<main class="bg-transparent">
 <div class="container w-75 py-5 rounded-3">
     <!-- notification after updating the profile -->
    <div class="<?php echo $class; ?>" role="alert">
@@ -98,8 +105,8 @@ mysqli_close($connect);
            <div class="table-responsive">
            <table class="table table-striped table-muted rounded-3">
                 <tr>
-                    <td colspan="2"><h2 class="display-3 my-5 text-center text-white my-4">Update Profile<br>
-                    <img class='rounded-circle mt-5 mb-0 border border-3 border-warning' height="175px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"></h2>
+                    <td colspan="2"><h2 class="display-3 mt-2 mb-5 text-center text-white my-4">
+                    <img class='rounded-circle mt-5 mb-0 border border-3 border-warning' height="155px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"><br>Update Profile</h2>
                     </td>
                 </tr>
                <tr>
@@ -109,6 +116,18 @@ mysqli_close($connect);
                <tr>
                    <th>Last Name</th>
                    <td><input class="form-control" type= "text" name="last_name"  placeholder="Last Name" value ="<?php echo $l_name ?>"></td>
+               </tr>
+               <tr>
+                   <th>Status</th>
+                   <td>
+                       <select class="form-control" name="user_status">
+                       <!-- <option value= "<?php echo $user_status ?>"><?php echo $user_status ?></option> -->
+                       <option value="<?php echo $user_status ?>"><?php echo ($user_status == 'adm')? 'adm': 'user' ?></option>
+                       <option value="<?php echo ($user_status == 'adm')? 'user': 'adm' ?>">
+                        <?php echo ($user_status == 'adm')? 'user': 'adm' ?>
+                        </option>
+                   </select>
+                   <!-- <input class="form-control" type="text" name="user_status" placeholder= "Status of the user" value= "<?php echo $user_status?>"></td> -->
                </tr>
                <tr>
                    <th>Email</th>
@@ -127,8 +146,15 @@ mysqli_close($connect);
                     </td>
                </tr>
                <tr>
-                   <th>Picture</th>
-                   <td><input class="form-control" type="file" name="picture"></td>
+                <!-- new -->
+                <!-- old -->
+                <th>Picture</th>
+                <td>
+                    <div class="input-group">
+                    <label class="input-group-text" for="upload_picture"><i class="bi bi-camera-fill"></i></label>
+                    <input class="form-control"  type="file" name="picture" id="upload_picture">
+                    </div>
+                </td>
                </tr>
                <tr>
                    <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>">

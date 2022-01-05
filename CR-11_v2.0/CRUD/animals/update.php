@@ -109,7 +109,7 @@
                 <tr>
                     <td class="label">DESCRIPTION</td>
                     <td>
-                    <textarea class="form-control" name="description" rows="8" value="<?= $description?>" placeholder="Leave the description of the pet in here..."></textarea>
+                    <textarea class="form-control" name="description" rows="8"><?= $description ?></textarea>
                     </td>
                 </tr>
                 <tr class="d-none">

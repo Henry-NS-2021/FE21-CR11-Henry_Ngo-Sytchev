@@ -82,17 +82,11 @@ session_start();
     $url="../";
     require_once("../components/bootstrap.php");
     ?>
-    <!-- [CSS] -->
-    <style>
-        main{
-            min-height: 100vh;
-            padding: 3% 15%;
-        }
-
-    </style>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Adopt a pet</title>
 </head>
-<body>
+<body class="bg-dark">
         <!-- [NAVBAR] -->
     <?php 
     $url = "";
@@ -100,7 +94,7 @@ session_start();
     require_once("../components/navbar.php"); ?>
 
         <!-- [MAIN] -->
-    <main class="bg-dark h-100">
+    <main class="bg-black">
     <?php echo ($display)?:"";?>
     </main>
     
