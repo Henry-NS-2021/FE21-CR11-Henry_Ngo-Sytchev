@@ -64,7 +64,7 @@ if(mysqli_num_rows($query_users) > 0){
             <td class='text-center'>
             <a class='btn btn-outline-secondary w-50 py-0' href='user_details.php?id={$row_user['id']}'><span>more</span></a>
             <a class='btn btn-outline-secondary w-50 py-0' href='user_update.php?id={$row_user['id']}'><span>edit</span></a>
-            <a class='btn btn-outline-secondary w-50 py-0' href='user_delete.php?id={$row_user['id']}'><span>drop</span></a>
+            <a class='" . (($row_user['user_status'] == 'adm')? 'd-none': '') . " btn btn-outline-secondary w-50 py-0' href='user_delete.php?id={$row_user['id']}'><span class='text-danger'>drop</span></a>
             </td>
         </tr>
         ";
