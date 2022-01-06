@@ -36,9 +36,11 @@ if(mysqli_num_rows($query_animals) > 0){
             <td class='text-center'>{$row['age']}</td>
             <td class='text-center'>{$row['location']}</td>
             <td class='text-center'>
-            <a class='btn btn-outline-secondary w-100 py-0' href='animals/details.php?id={$row['animal_id']}'><span>Show more</span></a>
-            <a class='btn btn-outline-secondary w-100 py-0' href='animals/update.php?id={$row['animal_id']}'><span>Update</span></a>
-            <a class='btn btn-outline-secondary w-100 py-0' href='animals/delete.php?id={$row['animal_id']}'><span>Delete</span></a>
+            <div class='row'>
+            <div class='col-12'><a class='btn btn-outline-secondary mx-auto w-100 py-0' href='animals/details.php?id={$row['animal_id']}'>Details</a></div>
+            <div class='col-12'><a class='btn btn-outline-secondary mx-auto w-100 py-0' href='animals/update.php?id={$row['animal_id']}'>Update</a></div>
+            <div class='col-12'><a class='btn btn-outline-secondary mx-auto w-100 py-0' href='animals/delete.php?id={$row['animal_id']}'>Delete</a></div>
+            </div>
             </td>
         </tr>
         ";
@@ -62,9 +64,11 @@ if(mysqli_num_rows($query_users) > 0){
             <td class='text-center'>{$row_user['email']}</td>
             <td class='text-center'>{$row_user['user_status']}</td>
             <td class='text-center'>
-            <a class='btn btn-outline-secondary w-50 py-0' href='user_details.php?id={$row_user['id']}'><span>more</span></a>
-            <a class='btn btn-outline-secondary w-50 py-0' href='user_update.php?id={$row_user['id']}'><span>edit</span></a>
-            <a class='" . (($row_user['user_status'] == 'adm')? 'd-none': '') . " btn btn-outline-secondary w-50 py-0' href='user_delete.php?id={$row_user['id']}'><span class='text-danger'>drop</span></a>
+            <div class=''>
+            <abbr class='text-decoration-none' title='View User'><a class='btn btn-sm btn-outline-primary py-0' href='user_details.php?id={$row_user['id']}'><i class='bi bi-eye-fill'></i></a></abbr>
+            <abbr class='text-decoration-none' title='Edit User'><a class='btn btn-sm btn-outline-warning py-0' href='user_update.php?id={$row_user['id']}'><i class='bi bi-pencil-square'></i></a></abbr>
+            <abbr class='text-decoration-none' title='Remove User'><a class='" . (($row_user['user_status'] == 'adm')? 'd-none': '') . " btn btn-sm btn-outline-danger py-0' href='user_delete.php?id={$row_user['id']}'><i class='bi bi-trash'></i></a></abbr>
+            </div>
             </td>
         </tr>
         ";
@@ -105,48 +109,50 @@ mysqli_close($connect);
 <body id="dashboard_body">
     <!-- [MAIN] -->
 <main  class="bg-transparent">
-    <!-- <div id="admin_panel" class="container pb-5 mx-auto w-100"> -->
         <!-- [DASHBOARD] -->
-        <div class="row alert alert-light mb-1">
+        <div class="row alert alert-light mx-auto w-100 pt-1">
                 <!-- navigation bar with sign out, update profile functions -->
-                <p class="bg-dark text-light text-end pb-2">
-                <sub>
-                    <span class="text-light mx-1"> Here you can...</span>
-                    <a class="text-decoration-none text-info mx-2" href="user_update.php?id=<?php echo $_SESSION['adm'] ?>">Update Profile</a> 
-                    <span class="text-light"> | </span>
-                    <a class="text-decoration-none text-info mx-2" href="logout.php?logout">Sign Out</a>
-                </sub>
+            <div class="row py-0 mx-auto bg-dark">
+                <p id="navigation_user" class="text-light text-end">
+                    <sub>
+                        <span class="align-middle text-light mx-1"> Here you can...</span>
+                        <a class="align-middle text-decoration-none text-info mx-2" href="user_update.php?id=<?php echo $_SESSION['adm'] ?>">Update Profile</a> 
+                        <span class="align-middle text-light"> | </span>
+                        <a class="align-middle text-decoration-none text-info mx-2" href="logout.php?logout">Sign Out</a>
+                    </sub>
                 </p>
+            </div>
+            <div class="row pt-3 mx-auto border">
                 <!-- admin picture and buttons -->
-            <div class="col-4 justify-content-center text-center ">    
-                <img id="admin_img" class="mb-2" src="pictures/<?= $row_user['picture'] ?>" alt="Adm avatar">
-                <h2 class="fw-lighter text-danger mb-3"><?= $full_name ?></h2>
-                <p class="text-center text-danger fw-bolder">Administrator</p>
-            </div> 
-            <!-- welcome message -->
-            <div class="col-6 text-center align-self-center">
-                <h2 class="fs-5 fw-bolder mb-3">Welcome to the Dashboard!</h2>
-                <p class="text-center mt-2">
-                    <a class="btn btn-outline-dark fw-bolder py-0 px-2 w-75" href="animals/index.php">View Website</a>
-                    <a class="btn btn-outline-success fw-bolder py-0 my-1 text-decoration-none w-75" href="animals/create.php">Add Pet</a>
-                    <a class="btn btn-outline-success fw-bolder py-0 text-decoration-none w-75" href="user_create.php">Add User</a>
-                </p>
-                
+                <div class="col justify-content-center align-self-center text-center ">    
+                    <div><img id="admin_img" class="my-2" src="pictures/<?= $row_user['picture'] ?>" alt="Adm avatar"></div>
+                    <h5 class="fw-lighter text-info fw-lighter mb-1"><?= $full_name ?></h5>
+                    <p class="text-center text-danger fw-bold"><sup>Administrator</sup></p>
+                </div> 
+                <!-- welcome message -->
+                <div class="col text-center align-self-center">
+                    <h2 class="fs-5 mb-3">Welcome to the Dashboard!</h2>
+                    <p class="text-center mt-2">
+                        <a class="btn btn-outline-dark py-0 px-2 w-50" href="animals/index.php">View Website</a>
+                        <a class="btn btn-outline-success py-0 my-1 text-decoration-none w-50" href="animals/create.php">Add Pet</a>
+                        <a class="btn btn-outline-success py-0 text-decoration-none w-50" href="user_create.php">Add User</a>
+                    </p>  
                 </div>
-                <hr class="bg-dark py-1 mt-3 mb-0">
+            </div>
+                <hr class="bg-secondary py-1 mt-0">
         </div>
 
-        <!-- [Navigation Tabs for animals and users] -->
+        <!-- [NAVIGATION TABS for animals and users] -->
         <!-- tabs -->
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <!-- pets' button -->
-                    <button class="nav-link py-0 mx-1 fw-bold active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pets</button>
+                    <button class="nav-link py-0 mx-1 fw-bold active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pet records</button>
                     <!-- users' button -->
-                    <button class="nav-link py-0 mx-1 fw-bold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Users</button>
+                    <button class="nav-link py-0 mx-1 fw-bold" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">User records</button>
                 </div>
             </nav>
-            <!-- tabs' content -->
+            <!-- TABS' CONTENT -->
             <div class="tab-content pb-5" id="nav-tabContent">
                 <!-- content pets -->
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
@@ -155,8 +161,8 @@ mysqli_close($connect);
                     <h1 class='display-5 text-center text-white mt-5'>Pet Records</h1>
                     <hr class="bg-info shadow py-1 w-50 mx-auto mb-4 mt-1">
 
-                    <div class="row w-75 table-responsive border border-info border-2 rounded rounded-danger mt-3 mx-auto">
-                    <table class="table table-light table-striped my-0">
+                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto">
+                    <table class="table table-secondary table-striped my-0">
                         <thead class="table-dark">
                             <tr class="align-middle">
                                 <td class="text-center">Picture</td>
@@ -179,7 +185,7 @@ mysqli_close($connect);
                     <h1 class='display-5 text-center text-white mt-5'>Users Records</h1>
                     <hr class="bg-info shadow py-1 w-50 mx-auto mb-4 mt-1">
 
-                    <div class="row w-75 table-responsive border border-info border-2 rounded rounded-danger mt-3 mx-auto">
+                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto">
                     <table class="table table-light table-striped my-0">
                         <thead class="table-dark">
                             <tr class="align-middle">

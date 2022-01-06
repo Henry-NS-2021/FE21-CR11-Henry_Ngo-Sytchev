@@ -24,7 +24,7 @@ session_start();
         if(mysqli_num_rows($query) == 1){
             foreach($result as $row){
                 $display = "
-                <div class='card my-5 mx-auto' style='min-width: 18rem; max-width: 40rem;'>
+                <div class='card my-5 mx-auto' style='min-width: 18rem; max-width: 540px'>
                     <img class='card-img-top img-fluid' src='../pictures/{$row["picture"]}' alt='Card image cap'>
                     <div class='card-body'>
                         <h3 class='card-title text-center mt-3'>{$row["name"]}
@@ -38,16 +38,16 @@ session_start();
                         <p class='p-0 m-0'><span class='text-secondary fw-bold'>Hobbies:</span><br>{$row["hobbies"]}</p> 
                         
                         <hr>
-                        <p class='card-text'><i class='bi bi-book-half'></i> <b class='text-secondary'>Description</b><br>{$row["description"]}</p>
+                        <p class='card-text'><i class='bi bi-info-square'></i> <b class='text-secondary'>Description</b><br>{$row["description"]}</p>
                         <hr>
                         <p class='card-text text-center mb-0'>
                             <small'>
-                            <a class='" . ($row['status'] == 'adopted'? 'd-none': '') . " btn btn-primary text-light p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
+                            <a class='" . ($row['status'] == 'adopted'? 'd-none': '') . " btn btn-outline-primary  p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
                             </small>
                         </p>
                         <p class='text-center p-0 m-0'>
                             <sub class='mt-2'>
-                                <a href='index.php'>Return to the pet list</a>
+                                <a class='btn btn-dark w-50' href='index.php'>Return to the pet list</a>
                             </sub>
                         </p>
                     </div>
@@ -84,7 +84,7 @@ session_start();
     ?>
     <!-- CSS -->
     <link rel="stylesheet" href="../styles/style.css">
-    <title>Code Review 11: Adopt a pet</title>
+    <title>Code Review 11: Details</title>
 </head>
 <body class="bg-dark">
         <!-- [NAVBAR] -->

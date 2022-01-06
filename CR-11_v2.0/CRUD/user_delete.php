@@ -70,20 +70,16 @@ mysqli_close($connect);
          <div class='row justify-content-center align-items-center bg-light text-danger border border-2 border-danger rounded-3 py-4 shadow'>
                      <h1 class="text-danger"><i class="bi bi-exclamation-triangle-fill"></i> ATTENTION</h1>
                      <hr class='bg-danger py-1 mb-4 mx-auto w-75'>
-                     <p class='mt-2 mb-0 fs-4'>You are about to delete the user below:</p>
-                     <div class="col-sm-8 col-md-5">
-                           <!-- <img class='img-fluid' max-width='420px' width='100%' src='pictures/<?= $picture ?>'> -->
+                     <p class='mt-3 mb-0 fs-5 text-dark'>You are about to delete the user below:</p>
+                     <!-- user data -->
+                     <div class="row shadow border rounded text-dark py-1 mt-1 w-75">
+                          <div class="col-sm-12 col-md-2 align-self-center"><img class="img-fluid" width="50px" src="pictures/<?php echo $picture?>"></div>
+                          <div class="col-sm-12 col-md-6 align-self-center"><?php echo "$f_name $l_name"?></div>
+                          <div class="col-sm-12 col-md-4 align-self-center"><?php echo $email?></div>
+                     
                      </div>
-                        
-                     <table class="table text-dark w-75 mt-1 px-2">
-                        <tr class="mx-3 align-middle border border-muted bg-white">
-                           <td><img class="img-fluid" width="50px" src="pictures/<?php echo $picture?>"></td>
-                           <td><?php echo "$f_name $l_name"?></td>
-                           <td><?php echo $email?></td>
-                        </tr>
-                     </table>
 
-                     <h3 class="mb-3">Do you really want to delete this user?</h3>
+                     <h3 class="mt-5 mb-3">Would you like to continue?</h3>
                      <div class='col-sm-12 col-md-7 border-start border-1 ps-3'>
 
                      </div>
@@ -94,7 +90,7 @@ mysqli_close($connect);
                         <input type="hidden" name="picture" value="<?php echo $picture ?>" />
                         <button class="btn btn-outline-danger fw-bold py-0 my-1" type="submit">Yes, please!</button >
                         <a href="dashboard.php">
-                        <button class="btn btn-primary fw-bold py-0 my-1" type="button">No, return!</button></a>
+                        <button class="btn btn-primary fw-bold py-0 my-1" type="button">No, return</button></a>
                      </form>
                      </div>
                     </div>

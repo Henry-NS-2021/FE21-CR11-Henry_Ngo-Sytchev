@@ -24,7 +24,7 @@
         }
 
         .nav_link:hover{
-            color: black;
+            color: gold;
             font-weight: bold;
         }
     </style>

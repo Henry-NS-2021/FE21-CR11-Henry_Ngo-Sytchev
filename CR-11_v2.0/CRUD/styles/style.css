@@ -1,3 +1,7 @@
+footer > a:hover {
+  font-size: smaller;
+}
+
 input {
   width: 100%;
 }
@@ -18,7 +22,7 @@ th {
 }
 
 #dashboard_body {
-  background: black url("../pictures/layout_img/bg.jpeg") center center;
+  background: #212529 url("../pictures/layout_img/bg.jpeg") center center no-repeat;
   background-size: cover;
 }
 
