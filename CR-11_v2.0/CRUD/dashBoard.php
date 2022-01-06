@@ -113,7 +113,7 @@ mysqli_close($connect);
         <div class="row alert alert-light mx-auto w-100 pt-1">
                 <!-- navigation bar with sign out, update profile functions -->
             <div class="row py-0 mx-auto bg-dark">
-                <p id="navigation_user" class="text-light text-end">
+                <p id="navigation_user" class="col text-light text-end">
                     <sub>
                         <span class="align-middle text-light mx-1"> Here you can...</span>
                         <a class="align-middle text-decoration-none text-info mx-2" href="user_update.php?id=<?php echo $_SESSION['adm'] ?>">Update Profile</a> 
@@ -124,13 +124,13 @@ mysqli_close($connect);
             </div>
             <div class="row pt-3 mx-auto border">
                 <!-- admin picture and buttons -->
-                <div class="col justify-content-center align-self-center text-center ">    
+                <div class="col-sm-12 col-md-6 justify-content-center align-self-center text-center ">    
                     <div><img id="admin_img" class="my-2" src="pictures/<?= $row_user['picture'] ?>" alt="Adm avatar"></div>
                     <h5 class="fw-lighter text-info fw-lighter mb-1"><?= $full_name ?></h5>
                     <p class="text-center text-danger fw-bold"><sup>Administrator</sup></p>
                 </div> 
                 <!-- welcome message -->
-                <div class="col text-center align-self-center">
+                <div class="col-sm-12 col-md-6 text-center align-self-center">
                     <h2 class="fs-5 mb-3">Welcome to the Dashboard!</h2>
                     <p class="text-center mt-2">
                         <a class="btn btn-outline-dark py-0 px-2 w-50" href="animals/index.php">View Website</a>

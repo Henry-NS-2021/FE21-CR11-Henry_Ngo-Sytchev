@@ -91,7 +91,7 @@ mysqli_close($connect);
 
 <!-- [MAIN] -->
 <main class="bg-transparent">
-<div class="container w-75 py-5 rounded-3">
+<div class="container py-5 rounded-3" style="max-width: 720px">
     <!-- notification after updating the profile -->
    <div class="<?php echo $class; ?>" role="alert">
        <p><?php echo ($message) ?? ''; ?></p>
@@ -162,7 +162,7 @@ mysqli_close($connect);
                    <td></td>
                    <td class="text-center py-3">
                         <button class="btn btn-success py-3 mb-2 w-100" name="submit"  type= "submit">Save Changes</button>
-                        <a href= "<?php echo $backBtn?>"><button class="btn btn-outline-warning py-0 px-3 w-100" type="button">Back</button></a>
+                        <a href= "<?php echo $backBtn?>"><button class="btn btn-outline-light py-0 px-3 w-100" type="button">Dashboard</button></a>
                     </td>
                </tr>
            </table>
