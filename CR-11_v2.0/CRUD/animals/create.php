@@ -33,16 +33,16 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Create new record</title>
 </head>
-<body>
+<body id="dashboard_body">
     <!-- [MAIN] -->
-    <main class="bg-dark">
-
+    <main class="bg-transparent pt-5">
+    <div class="container bg-dark rounded-3 text-dark border border-info border-3 py-5 w-75" style="max-width: 720px">
     <!-- [FORM] -->
-    <form method="POST" action="actions/a_create.php" enctype="multipart/form-data" class=" mx-5 my-0">
+    <form method="POST" action="actions/a_create.php" enctype="multipart/form-data" class="my-0">
         
         <table class="bg-dark table m-0 text-muted fs-6 w-75 mx-auto">
                 <tr>
-                    <td colspan="2"><h2 class="display-3 mb-5 text-center text-white my-4">New animal record</h2>
+                    <td colspan="2"><h2 class="display-5 mb-5 mt-0 text-center text-info">Add New Animal</h2>
                     </td>
                 </tr>
                 <tr>
@@ -84,19 +84,15 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
                     <textarea class="form-control" name="description" rows="8" placeholder="Leave the description of the pet in here..."></textarea>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        </td>
-                        <td>
-                            <input class="btn btn-success px-5 py-3 mb-2 mt-4 fw-bold" type="submit" name="name" placeholder="Name" value="Confirm">
-                            <a href="../dashBoard.php">
-                                <p class="btn btn-outline-light border border-1 px-5 py-0 mb-3 mx-auto fw-bold w-100">Dashboard</p>
-                            </a>
-                    <br>
-                </td>
-                </tr>
             </table>
+                <div class="text-center">
+                    <input class="btn btn-success px-5 py-3 mb-2 mt-4 fw-bold w-75" type="submit" name="name" placeholder="Name" value="Add Animal">
+                </div>
+                <div class="text-center">
+                    <a href="../dashBoard.php"><p class="btn btn-outline-light border border-1 px-5 py-0 mb-4 fw-bold mx-auto w-75">Dashboard</p></a>
+                </div>                
     </form>
+    </div>
     </main>
 
 </body>

@@ -135,7 +135,7 @@ mysqli_close($connect);
                     <p class="text-center mt-2">
                         <a class="btn btn-outline-dark py-0 px-2 w-50" href="animals/index.php">View Website</a>
                         <a class="btn btn-outline-success py-0 my-1 text-decoration-none w-50" href="animals/create.php">Add Pet</a>
-                        <a class="btn btn-outline-success py-0 text-decoration-none w-50" href="user_create.php">Add User</a>
+                        <a class="btn btn-outline-success py-0 text-decoration-none w-50" href="user_create.php">Create User</a>
                     </p>  
                 </div>
             </div>
