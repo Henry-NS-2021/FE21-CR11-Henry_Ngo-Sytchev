@@ -24,22 +24,23 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
             
             foreach($result as $data){
                 $delete .= "
-                <div class='alert alert-muted border border-danger border-3 my-5 text-center text-danger fs-4 mx-auto w-100'>
+                <div class='alert alert-light border border-danger border-3 my-5 text-center text-danger fs-4 mx-auto w-100' style='max-width: 720px'>
                     <h2 class='display-6 my-3 fw-bold'>Attention!</h2>
                     <hr class='bg-danger py-1 mb-4 mx-auto w-75'>
-                    <p>You are about to <b>delete</b> this record. <br>Would you REALLY like to do it?</p>
+                    <p>You are about to <b>delete</b> this record.</p> 
+                    <h3>Would you REALLY like to do it?</h3>
 
                     <form class='mt-5 p-0' action='actions/a_delete.php' method='POST'>
                         <input type='hidden' name='animal_id' value='{$data['animal_id']}'>
                         <input type='hidden' name='picture' value='{$data['picture']}'>
                         <p class='text-center mt-0 mb-3'>
                             <button class='btn btn-outline-danger py-0 px-3 mx-2 w-25' type='submit'>YES, please</button>
-                            <a href='../dashBoard.php'><span class='btn btn-outline-primary py-0 px-3 mx-2 w-25'>NO, keep it</span></a>
+                            <a href='../dashBoard.php'><span class='btn btn-outline-primary py-0 px-3 mx-2 w-25'>NO, return</span></a>
                         </p>
                     </form> 
                 </div>
                 
-                <div class='card mb-3 mx-auto w-75' style='min-width: 25vw;'>
+                <div class='card mb-3 mx-auto w-75' style='min-width: 25vw; max-width: 720px'>
                 <div class='row g-0'>
                     <div class='col-sm-12 col-md-5 align-self-center'>
                         <div><img class='img-fluid align-middle' src='../pictures/" .$data['picture'] . "'></div>

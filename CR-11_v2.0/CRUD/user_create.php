@@ -144,7 +144,7 @@ mysqli_close($connect);
     <!-- [MAIN] -->
     <main class="bg-transparent pt-5">
 
-    <div class="container bg-dark rounded-3 text-dark border border-info border-3 w-75 py-5" style="max-width: 720px">
+    <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5" style="max-width: 720px">
             <!-- [FORM] -->
             <form class="w-auto rounded-3 mx-auto shadow py-5 px-5" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
                     <div class="text-center  mb-2"><i class="bi bi-person-circle text-light display-1"></i></div>
@@ -186,10 +186,10 @@ mysqli_close($connect);
                     <!-- password -->
                     <input type="password" name="pass" class="form-control mb-1 py-1" placeholder="Enter Password" maxlength="15"  />
                         <span class="text-danger"> <?php echo $passError; ?> </span>
-                    <hr/>
+                    <hr class="bg-info">
                     <!-- submit button -->
                     <div class="text-end">
-                        <button type="submit" class="btn btn-block btn-success py-1 mb-1 w-100" name="create_user">Create User</button>
+                        <button type="submit" class="btn btn-block btn-success py-2 mb-2 w-100" name="create_user">Create User</button>
                         <a href="dashBoard.php"><p class="btn btn-block btn-outline-light py-0 w-100" type="submit" >Dashboard</p></a>
                     </div>
                     <hr/>

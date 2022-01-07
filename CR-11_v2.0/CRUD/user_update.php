@@ -105,8 +105,11 @@ mysqli_close($connect);
            <div class="table-responsive">
            <table class="table table-striped table-muted rounded-3">
                 <tr>
-                    <td colspan="2"><h2 class="display-3 mt-2 mb-5 text-center text-white my-4">
-                    <img class='rounded-circle mt-5 mb-0 border border-3 border-warning' height="155px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"><br>Update Profile</h2>
+                    <td colspan="2"><h2 class="display-3 fw-light mt-2 mb-5 text-center text-info my-4">
+                    Update Profile
+                    <hr class="bg-info shadow py-1 mt-3 mb-4 mx-auto w-75">
+                    <img class='rounded-3 mb-0' height="155px" src='pictures/<?php echo $data['picture'] ?>' alt="<?php echo $f_name ?>"><br></h2>
+                    
                     </td>
                 </tr>
                <tr>
@@ -156,16 +159,15 @@ mysqli_close($connect);
                     </div>
                 </td>
                </tr>
-               <tr>
-                   <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>">
-                   <input type= "hidden" name= "picture" value= "<?php echo $picture ?>">
-                   <td></td>
-                   <td class="text-center py-3">
-                        <button class="btn btn-success py-3 mb-2 w-100" name="submit"  type= "submit">Save Changes</button>
-                        <a href= "<?php echo $backBtn?>"><button class="btn btn-outline-light py-0 px-3 w-100" type="button">Dashboard</button></a>
-                    </td>
-               </tr>
-           </table>
+            </table>
+            <div class="text-end">
+                <!-- hidden picture and id -->
+                <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>">
+                <input type= "hidden" name= "picture" value= "<?php echo $picture ?>">
+                <!-- buttons -->
+                 <button class="btn btn-success py-2 mb-2 w-75" name="submit"  type= "submit">Save Changes</button>
+                 <a href= "<?php echo $backBtn?>"><button class="btn btn-outline-light py-0 px-3 w-75" type="button">Dashboard</button></a>
+            </div>
            </div>
        </form>   
 </div>
