@@ -15,6 +15,7 @@ if (isset($_SESSION["user"])) {
 
 $id = $_SESSION['adm'];
 $status = 'adm';
+
 $sql = "SELECT * FROM users WHERE status != '$status'";
 $query = mysqli_query($connect, $sql);
 
@@ -55,6 +56,7 @@ $users = "";
 
 if(mysqli_num_rows($query_users) > 0){
     foreach($result_users as $row_user){
+        $picture = $row_user["picture"];
         $users .= "
         <tr class='align-middle text-center border-top border-bottom border-secondary'>
             <td class='text-center'>
@@ -110,7 +112,7 @@ mysqli_close($connect);
     <!-- [MAIN] -->
 <main  class="bg-transparent">
         <!-- [DASHBOARD] -->
-        <div class="row alert alert-light mx-auto w-100 pt-1">
+        <div class="row alert alert-light rounded-3 pt-2 pb-0 mx-auto w-100 ">
                 <!-- navigation bar with sign out, update profile functions -->
             <div class="row py-0 mx-auto bg-dark">
                 <p id="navigation_user" class="col text-light text-end">
@@ -125,7 +127,7 @@ mysqli_close($connect);
             <div class="row pt-3 mx-auto border">
                 <!-- admin picture and buttons -->
                 <div class="col-sm-12 col-md-6 justify-content-center align-self-center text-center ">    
-                    <div><img id="admin_img" class="my-2" src="pictures/<?= $row_user['picture'] ?>" alt="Adm avatar"></div>
+                    <div><img id="admin_img" class="my-2" src="pictures/<?= $picture ?>" alt="Adm avatar"></div>
                     <h5 class="fw-lighter text-info fw-lighter mb-1"><?= $full_name ?></h5>
                     <p class="text-center text-danger fw-bold"><sup>Administrator</sup></p>
                 </div> 
@@ -133,7 +135,7 @@ mysqli_close($connect);
                 <div class="col-sm-12 col-md-6 text-center align-self-center">
                     <h2 class="fs-5 mb-3">Welcome to the Dashboard!</h2>
                     <p class="text-center mt-2">
-                        <a class="btn btn-outline-dark py-0 px-2 w-50" href="animals/index.php">View Website</a>
+                        <a class="btn btn-dark py-0 px-2 w-50" href="animals/index.php">View Website</a>
                         <a class="btn btn-outline-success py-0 my-1 text-decoration-none w-50" href="animals/create.php">Add Pet</a>
                         <a class="btn btn-outline-success py-0 text-decoration-none w-50" href="user_create.php">Create User</a>
                     </p>  

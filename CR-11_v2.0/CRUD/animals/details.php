@@ -24,14 +24,13 @@ session_start();
         if(mysqli_num_rows($query) == 1){
             foreach($result as $row){
                 $display = "
-                <div class='card my-5 mx-auto' style='min-width: 18rem; max-width: 540px'>
+                <div class='card mt-5 mx-auto' style='min-width: 220px; width: 100%; max-width: 480px'>
                     <img class='card-img-top img-fluid' src='../pictures/{$row["picture"]}' alt='Card image cap'>
                     <div class='card-body'>
                         <h3 class='card-title text-center mt-3'>{$row["name"]}
                         <span class='card-subtitle text-secondary'> | {$row["breed"]}</span></h3>
                         <p class='text-center my-0'><i class='bi bi-geo-alt'></i> {$row["location"]}
                         </p>
-                        <hr class='mt-1'>
                         <p class='p-0 m-0'>
                         <span class='text-secondary fw-bold'>Age:</span> {$row["age"]} years old </p> 
                         <p class='p-0 m-0'><span class='text-secondary fw-bold'>Size:</span> {$row["size"]} cm </p> 

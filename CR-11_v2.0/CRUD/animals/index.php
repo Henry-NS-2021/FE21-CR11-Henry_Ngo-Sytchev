@@ -7,7 +7,7 @@
         exit;
      }
      
-    $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id;";
+    $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id WHERE pet_adoption.pet_id is NULL;";
     $query = mysqli_query($connect, $sql);
     $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
     echo $animals = "";
@@ -32,13 +32,13 @@
             ";    
         }
     } 
-    // elseif (mysqli_num_rows($query) == 0) {
-    // $animals = "<tr class=''>
-    //             <td class='text-center' colspan='5'>
-    //             Sorry, there are currently no pets to adopt at the moment.<br> Please, come again later.
-    //             </td>
-    //         </tr>";
-    // }
+    elseif (mysqli_num_rows($query) == 0) {
+    $animals = "<tr>
+                    <td class='text-center' colspan='5'>
+                    <p class='py-3 fs-4 lh-md'>Sorry, there are no pets to adopt at the moment.<br> <span class='text-success'>Please, come again later.<span></p>
+                    </td>
+                </tr>";
+    }
 
 ?>
 
@@ -59,7 +59,7 @@
     require_once("../components/bootstrap.php");
     ?>
     <!-- CSS -->
-    <link rel="stylesheet" href="../../styles/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Adopt a pet</title>
 </head>
 <body>
@@ -76,20 +76,20 @@
     <h1 class="text-center text-light fw-light display-4">Pets to Adopt</h1>
         <hr class="bg-success py-1 mb-0 mx-auto w-75">
         <div class="table-responsive">
-        <table class="table table-light table-striped border border-muted my-5 mx-auto w-75">
-            <thead class="table-dark text-center">
-                <tr class="align-middle">
-                    <td>Picture</td>
-                    <td>Name</td>
-                    <td>Breed</td>
-                    <td>Age <small>(years)</small></td>
-                    <td>Details</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?= $animals ?>
-            </tbody>
-        </table>
+            <table class="table table-light table-striped border border-muted my-5 mx-auto w-75">
+                <thead class="table-dark text-center">
+                    <tr class="align-middle">
+                        <td>Picture</td>
+                        <td>Name</td>
+                        <td>Breed</td>
+                        <td>Age <small>(years)</small></td>
+                        <td>Details</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?= $animals ?>
+                </tbody>
+            </table>
         </div>
     </div>
     </main>

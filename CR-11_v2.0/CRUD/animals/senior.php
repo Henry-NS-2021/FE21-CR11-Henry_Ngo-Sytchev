@@ -7,14 +7,14 @@
     exit;
     }
 
-   $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id WHERE age > 8 ORDER BY age DESC;";
+   $sql = "SELECT * FROM animals LEFT JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id WHERE age > 8 AND pet_adoption.pet_id is NULL ORDER BY age DESC;";
    $query = mysqli_query($connect, $sql);
    $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
    $seniors = "";
    
    if(mysqli_num_rows($query) > 0){
        foreach($result as $row){
-        //    diplays only non-adopted pets in the seniors' list
+        // diplays only non-adopted pets in the seniors' list
            $seniors .= "
            <tr class='" . ($row['status'] == 'adopted'? 'd-none': '') . " align-middle text-center border-top border-bottom border-secondary'>
                <td>
@@ -33,10 +33,10 @@
        }
    } else {
        $seniors = "<tr>
-                <td class='text-center' colspan='6'>
-                Sorry, there are currently no Senior pets at the moment.
-                </td>
-            </tr>";
+                    <td class='text-center' colspan='6'>
+                    <p class='py-3 fs-4 lh-md'>Sorry, there are currently no Senior pets at the moment.<br> <span class='text-success'>Please, come again later.<span></p>
+                    </td>
+                </tr>";
    }
 
 ?>
@@ -76,21 +76,21 @@
         <hr class="bg-success py-1 mb-5 mx-auto w-75">
         <!-- table -->
         <div class="table-responsive">
-        <table class="table table-secondary table-striped border my-0 mx-auto w-75">
-            <thead class="table-dark text-white text-center fw-light">
-                <tr class="align-middle">
-                    <td>Picture</td>
-                    <td>Name</td>
-                    <td>Breed</td>
-                    <td>Age <small>(years)</small></td>
-                    <td>Location</td>
-                    <td>Action</td>
-                </tr>
-            </thead>
-            <tbody>
-                <?= $seniors ?>
-            </tbody>
-        </table>
+            <table class="table table-secondary table-striped border my-0 mx-auto w-75">
+                <thead class="table-dark text-white text-center fw-light">
+                    <tr class="align-middle">
+                        <td>Picture</td>
+                        <td>Name</td>
+                        <td>Breed</td>
+                        <td>Age <small>(years)</small></td>
+                        <td>Location</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?= $seniors ?>
+                </tbody>
+            </table>
         </div>
     </div>
     </main>
