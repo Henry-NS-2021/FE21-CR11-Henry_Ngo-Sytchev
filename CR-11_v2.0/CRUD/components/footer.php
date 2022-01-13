@@ -41,7 +41,7 @@
         <div class="container">
             <div class="d-flex flex-wrap justify-content-sm-center justify-content-md-around justify-content-lg-evenly mb-2">
                 <!-- <div class="d-flex border align-items-center text-center py-2 mb-4 w-50 mx-auto"> -->
-                <h1 class="border border-3 align-self-center py-2 mb-4 w-auto mx-auto display-6 text-uppercase text-center" style="min-width:220px; width:50vw; max-width:420px"><span class="fw-bold">Pet</span> St<img id="face" src="../pictures/layout_img/home.png.">rey</h1>
+                <h1 class="border border-3 pt-3 pb-2align-self-center mb-4 w-auto mx-auto display-6 text-uppercase text-center" style="min-width:220px; width: 100%; max-width:420px"><span class="fw-bold">Pet</span> St<img id="face" src="<?= $url ?>pictures/layout_img/home.png.">rey</h1>
                 <!-- </div> -->
                 <!-- Social media -->
                 <div class="align-self-center text-center mx-auto">

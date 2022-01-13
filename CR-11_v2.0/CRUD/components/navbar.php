@@ -56,11 +56,11 @@
         </section>
         <section>
             <span class="ms-5 me-2"> | </span>
-            <a class="nav_link text-decoration-none" href="<?= ($url??""); ?>../<?= (isset($_SESSION["user"])?"home.php":"dashBoard.php"); ?>">
-                <small class="p-0 mb-1 mx-1"><i class="bi bi-person fs-4"></i></small>
-            </a>
+            <!-- <a class="nav_link text-decoration-none" href="<?= ($url??""); ?>../<?= (isset($_SESSION["user"])?"home.php":"dashBoard.php"); ?>">
+                <span class="p-0 mb-1 mx-1"><i class="bi bi-person fs-4"></i></span>
+            </a> -->
             <a class="nav_link text-decoration-none" href="<?= ($url??""); ?>../logout.php?logout">
-                <span class="p-0 mb-1 mx-3">SIGN OUT</span>
+                <span class="p-0 mb-1 mx-3">SIGN OUT <i class="bi bi-box-arrow-right"></i></span>
             </a>
         </section>
     </div>
