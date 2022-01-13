@@ -14,7 +14,7 @@ if (isset($_SESSION["user"])) {
 }
 
 require_once 'components/db_connect.php';
-require_once 'components/file_upload.php';
+require_once 'user_file_upload.php';
 
 
 $error = false;

@@ -110,7 +110,7 @@ mysqli_close($connect);
 </head>
 <body id="dashboard_body">
     <!-- [MAIN] -->
-<main  class="bg-transparent">
+<main  class="bg-transparent pt-0">
         <!-- [DASHBOARD] -->
         <div class="row alert alert-light rounded-3 pt-2 pb-0 mx-auto w-100 ">
                 <!-- navigation bar with sign out, update profile functions -->
@@ -118,9 +118,9 @@ mysqli_close($connect);
                 <p id="navigation_user" class="col text-light text-end">
                     <sub>
                         <span class="align-middle text-light mx-1"> Here you can...</span>
-                        <a class="align-middle text-decoration-none text-info mx-2" href="user_update.php?id=<?php echo $_SESSION['adm'] ?>">Update Profile</a> 
+                        <a class="align-middle text-decoration-none text-info mx-2" href="user_update.php?id=<?php echo $_SESSION['adm'] ?>">Update Profile <i class="bi bi-person fs-6"></i></a> 
                         <span class="align-middle text-light"> | </span>
-                        <a class="align-middle text-decoration-none text-info mx-2" href="logout.php?logout">Sign Out</a>
+                        <a class="align-middle text-decoration-none text-info mx-2" href="logout.php?logout">Sign Out <i class="bi bi-box-arrow-right"></i></a>
                     </sub>
                 </p>
             </div>

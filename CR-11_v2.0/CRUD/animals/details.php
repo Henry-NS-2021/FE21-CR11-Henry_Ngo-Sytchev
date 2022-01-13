@@ -44,14 +44,19 @@ session_start();
                             <a class='" . ($row['status'] == 'adopted'? 'd-none': '') . " btn btn-outline-primary  p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
                             </small>
                         </p>
-                        <p class='" . (($_SESSION['adm'])? 'd-none': '') . " text-center p-0 m-0'>
-                            <sub class='mt-2'>
+                        <p class='" . (@($_SESSION['adm'])? 'd-none': '') . " text-center p-0 mb-2'>
+                            <sub>
                                 <a class='btn btn-dark w-50' href='index.php'>Return to the pet list</a>
                             </sub>
                         </p>
-                        <p class='" . (($_SESSION['adm'])? '': 'd-none') . " text-center p-0 m-0'>
-                            <sub class='mt-2'>
-                                <a class='btn btn-dark w-50' href='../dashBoard.php'>Dashboard</a>
+                        <p class='" . (@($_SESSION['user'])? '': 'd-none') . " text-center p-0 m-0'>
+                            <sub>
+                                <a class='btn btn-outline-dark p-0 w-50' href='../home.php'>Home</a>
+                            </sub>
+                        </p>
+                        <p class='" . (@($_SESSION['adm'])? '': 'd-none') . " text-center p-0 m-0'>
+                            <sub>
+                                <a class='btn btn-outline-dark p-0 w-50' href='../dashBoard.php'>Dashboard</a>
                             </sub>
                         </p>
                     </div>
@@ -103,6 +108,9 @@ session_start();
     </main>
     
         <!-- [FOOTER] -->
-    <?php require_once("../components/footer.php"); ?>
+    <?php 
+    $url = "../"; 
+    require_once("../components/footer.php"); 
+    ?>
 </body>
 </html>

@@ -20,26 +20,37 @@ $id = $_SESSION['user'];
 $query = mysqli_query($connect, "SELECT * FROM users WHERE id=" . $_SESSION['user']);
 $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
-$sql_adopt = "SELECT animals.name, animals.age, animals.location, animals.picture, animals.size FROM animals INNER JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id INNER JOIN users ON pet_adoption.user_id = users.id WHERE users.id = $id";
+$sql_adopt = "SELECT animals.animal_id, animals.name, animals.age, animals.location, animals.picture, animals.size FROM animals INNER JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id INNER JOIN users ON pet_adoption.user_id = users.id WHERE users.id = $id";
 $query_adopt = mysqli_query($connect, $sql_adopt);
 
 
 if(mysqli_num_rows($query_adopt) >= 1){
    $adopt_record = mysqli_fetch_all($query_adopt, MYSQLI_ASSOC);
    foreach($adopt_record as $adoption){
-   $adoptions .= "
-      <div class='py-1 px-2 mb-2 alert-info border border-white rounded-3'
-         <p class='my-2'><img class='img-fluid' src='pictures/{$adoption["picture"]}'></p>
-         <p class='my-2'><span class='fw-bold text-info bg-transparent'>Name: </span>{$adoption["name"]}</p>
-         <p class='my-2'><span class='fw-bold text-info bg-transparent'>Age: </span>{$adoption["age"]}</p>
-         <p class='my-2'><span class='fw-bold text-info bg-transparent'>Size: </span>{$adoption["size"]}</p>
-         <p class='my-2'><span class='fw-bold text-info bg-transparent'>Location: </span>{$adoption["location"]}</p>
-      </div>";
-
-      echo $adoption["adoption_id"] . "<br>";
-      // var_dump($adoption);
+   $adoptions .=         
+      "<tr class='align-middle my-3'>
+         <td>
+         <a href='animals/details.php?id={$adoption["animal_id"]}'><img class='img-fluid rounded-1' src='pictures/{$adoption["picture"]}'  style='max-width: 200px'></a>
+         </td>
+         <td>
+            <p id='adoption_font' class='align-middle p-0 text-secondary bg-transparent'>
+            <b>{$adoption["name"]}</b><br>
+            {$adoption["age"]} year(s), {$adoption["size"]} cm<br>
+            {$adoption["location"]}<br><br>
+            <a href='animals/details.php?id={$adoption["animal_id"]}'><span class='btn-sm btn-primary py-1'>details</span></a>
+            </p>
+         </td>
+      </tr>"
+      ;
+   } 
+} else {
+      $adoptions =  "
+         <tr>
+            <td colspan='2'>
+            <p class='text-muted text-center fs-5'>You have no adopted companions so far.</p>
+            </td>
+         </tr>";
    }
-}
 
 
 mysqli_close($connect);
@@ -71,15 +82,16 @@ main{
    background: linear-gradient(24deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);  
 }
 
-a #pets_link{
+#pets_link{
    color: whitesmoke;
    font-weight: lighter;
-   transition: font-weight .25s, border-bottom .35s;
+   font-size: 1.1em;
+   transition: font-weight .35s, border-bottom .35s;
 }
 
-a #pets_link:hover{
-   font-weight: normal;
-   color: gold;
+#pets_link:hover{
+   font-weight: bold;
+   color: black;
 }
 
 #cat_img{
@@ -91,24 +103,16 @@ a #pets_link:hover{
 }
 
 #homepage{
-   max-width: 2440px;
-} 
-
-#welcome_msg, #my_adoptions{
-   margin: 25px 10px; 
-   width: 100%;
-
-}
-
-#welcome_msg{
-   min-width: 320px;
-   max-width: 720px;
+   max-width: 1440px;
 }
 
 #my_adoptions{
-   min-width: 320px;
-   max-width: 420px;
-}  
+   max-width: 520px;
+} 
+
+#adoption_font{
+   font-size: 1rem;
+}
     
 </style>
 </head>
@@ -136,35 +140,41 @@ a #pets_link:hover{
       <hr class="bg-warning py-1 mt-3 mb-0">
    </header>
    <!-- [NAVBAR] -->
-   <nav class="bg-success py-1">
-      <a class="nav_link text-decoration-none" href="animals/index.php">
-         <p id="pets_link" class="text-start fs-4 px-5 m-0">VISIT PETS</p>
-      </a>
+   <nav class="bg-success py-3">
+         <p class="text-center py-2 px-5 m-0"><a  id="pets_link" class="nav_link text-decoration-none btn-lg btn-warning py-3" href="animals/index.php">VISIT PETS</a></p>
+      
    </nav>
    <!-- [MAIN] -->
    <main class="bg-dark text-light">
       <!-- Content: welcome and adoptions -->
-      <section id="homepage" class="d-flex justify-content-center align-items-start flex-wrap-reverse">
-         <div id="welcome_msg" class="flex-grow-1 alert-success text-center text-dark fs-5 border border-1 border-success rounded-1 py-4 px-4">
+      <section id="homepage" class="row gx-2 py-3 mx-auto">
+         <!-- welcome display -->
+         <div id="welcome_msg" class="col-sm-12 col-md col-lg alert-info text-center text-dark fs-5 border border-1 border-success rounded-1 py-5 px-4">
             <p class="text-center">
                <a href="animals/index.php"><img id="cat_img" class="img-fluid mx-auto mt-2 mb-2" width="250vw" src="pictures/layout_img/home.png" alt="animal"></a>
             </p>
-            <p class="pt-3 pb-2"><b class="fs-1">Hey!</b><br><br>
+            <p class="py-2"><b class="fs-1">Hey!</b><br><br>
             <b>Would you like to get some fluffy company in your life?</b></p>
             
-            <p class="mt-3 fw-lighter ">That is Great, because we definitely have something for you! Visit our <a class="text-success text-decoration-none" href="animals/index.php"><span>Pet Shelter</span></a> to find a "daily partner in crime".</p>
+            <p class="mt-3 mb-5 fw-lighter ">That is Great, because we definitely have something for you! Visit our <a class="text-success text-decoration-none" href="animals/index.php"><span>Pet Shelter</span></a> to find a "daily partner in crime".</p>
          </div>
+
          <!-- adoptions display -->
-         <div id="my_adoptions" class="align-self-end border border-info rounded-1 px-3">
-            <h2 class="fw-lighter text-center border-bottom border-success py-4 px-2">My Adoptions</h2>
+         <div id="my_adoptions" class="col-sm-12 col-md-4 col-lg-3 align-self-start border border-primary rounded-1 mx-2 px-2">
+            <h2 class="fw-lighter text-center border-bottom border-primary py-4 px-2">My Adoptions</h2>
+            <!-- table -->
             <div class="table-responsive">
-               <div class="table table-borderless table-success text-light">
+               <table class="table table-borderless table-muted">
+                  <tbody>
                   <?= $adoptions ?>
-               </div>
+                  </tbody>
+               </table>
             </div>
          </div>
       </section>
    </main>
+
+   
    <!-- [FOOTER] -->
    <?php 
    $url = "";

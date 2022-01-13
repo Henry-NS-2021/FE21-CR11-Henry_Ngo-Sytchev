@@ -123,6 +123,9 @@ session_start();
     </main>
     
         <!-- [FOOTER] -->
-    <?php require_once("../components/footer.php"); ?>
+    <?php 
+    $url = "../"; 
+    require_once("../components/footer.php"); 
+    ?>
 </body>
 </html>
