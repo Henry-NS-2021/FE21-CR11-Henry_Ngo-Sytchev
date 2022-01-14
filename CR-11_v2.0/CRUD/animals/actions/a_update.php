@@ -28,7 +28,7 @@
 
         $picture = file_upload($_FILES['picture'], 'animal');//file_upload() called  
         if($picture->error === 0){
-            ($_POST["picture"] == "animal_avatar.png")?: unlink("../../pictures/$_POST[picture]");          
+            ($_POST["picture"] == "animal.png")?: unlink("../../pictures/$_POST[picture]");          
             $sql = "UPDATE animals SET name = '$name', breed = '$breed', age = '$age', size = '$size', hobbies = '$hobbies', location = '$location', description = '$description', picture = '$picture->fileName' WHERE animal_id = '{$id}'";
         }else{
             $sql = "UPDATE animals SET name = '$name', breed = '$breed', age = '$age', size = '$size', hobbies = '$hobbies', location = '$location', description = '$description' WHERE animal_id = '{$id}';";
@@ -40,7 +40,8 @@
             $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'' ;
         } else {
             $class = "danger";
-            $message = "Error while updating record : <br>" . mysqli_connect_error();
+            $message = "<h2 class='display-6 my-3 fw-bold'>Error while updating record</h2><hr class='bg-" . $class . " py-1 mb-4 mx-auto w-75'>
+            <p class='fw-bolder my-5'>" . mysqli_error($connect) . "</p>";
             $uploadError = ($picture->error != 0)? $picture->ErrorMessage :'';
         }
         mysqli_close($connect);    
@@ -70,12 +71,12 @@
     <link rel="stylesheet" href="../../styles/style.css">
     <title>Code Review 11: Record updated</title>
 </head>
-<body>
+<body class="dashboard_body">
     <!-- [MAIN] -->
-    <main class="bg-dark my-0">
+    <main class="bg-transparent pb-5">
     <!-- CHECK THIS BLOCK -->
-    <div class="container py-5 m-0 mx-auto w-75">
-            <div class="bg-none border border-<?=$class;?> text-<?=$class;?> text-center pt-2 pb-5 mb-5"  role="alert">
+    <div class="container py-5">
+            <div class="bg-none border border-3 border-<?=$class;?> text-<?=$class;?> text-center pt-2 pb-5 px-5 mb-5 mx-auto alert_notification"  role="alert">
                 <p class="fs-3 mt-2 mb-5"><?php echo ($message) ?? ''; ?></p>
                 <p><?php echo ($uploadError) ?? ''; ?></p>
                 <a href='../../dashBoard.php' ><button class="btn btn-light border rounded-3 py-0 mt-3 mb-2 mx-auto w-50"  type='button'>Dashboard </button></a>

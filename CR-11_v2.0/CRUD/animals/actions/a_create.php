@@ -31,12 +31,13 @@ if ($_POST){
 
    if (mysqli_query($connect, $sql) === true) {
        $class = "success";
-       $message = "<h2 class='display-6 my-3 fw-bold'>Congratulations</h2>
+       $message = "<h2 class='display-6 mt-5 mb-3 fw-bold'>Congratulations</h2>
        <hr class='bg-success py-1 mb-4 mx-auto w-75'>
        <p class='my-2 fs-4'>The entry below was successfully created!</p> <br>
-            <table class='table table-success table-striped border border-2 border-light align-middle rounded w-100 m-auto'>
+            <div class='table-responsive px-5 m-0'>
+            <table class='table border border-1 border-secondary align-middle text-light custom_table'>
             <tr>
-            <th>PICTURE</th><td> <img class='img-fluid' width='80vw' src='../../pictures/{$picture->fileName}'></td>
+            <th>PICTURE</th><td> <img class='img-fluid rounded-3' width='50%' src='../../pictures/{$picture->fileName}'></td>
             </tr>
             <tr>
             <th>NAME</th><td> $name </td>
@@ -59,7 +60,8 @@ if ($_POST){
             <th>DESCRIPTION</th><td> $description </td>
             </tr>
             
-            </table><hr>";
+            </table>
+            </div><hr>";
        $uploadError = ($picture->error != 0)? $picture->ErrorMessage :'';
    } else {
        $class = "danger";
@@ -84,19 +86,14 @@ if ($_POST){
         <link rel="stylesheet" href="../../styles/style.css">
         <title>Code Review 11: Record created</title>
     </head>
-   <body>
-    <main class="bg-dark h-100">
+   <body class="dashboard_body">
+    <main class="bg-transparent py-5 px-0">
         <!-- [MESSAGE] -->
-        <div class="container py-5">
-            <div class="my-3">
-                <div class="h2 display-1 py-3 mt-0 text-start text-warning">
-                </div>
-                <hr>
-            </div>
-            <div class="alert alert-<?=$class;?> text-center my-0 mx-auto w-75"  role="alert">
+        <div class="container">
+            <div class="border border-3 border-<?php echo $class ?> text-center text-<?php echo $class ?> mx-auto alert_notification" role="alert">
                <p><?php echo ($message) ?? ''; ?></p>
                <p><?php echo ($uploadError) ?? '' ; ?></p>
-                <a href='../../dashBoard.php'><button class="btn btn-outline-dark mt-3 mb-2 py-0 px-5 fw-bold mx-auto w-50"  type='button'>Dashboard</button></a>
+                <a href='../../dashBoard.php'><button class="btn btn-outline-light mt-3 mb-5 py-0 px-5 fw-bold mx-auto w-50"  type='button'>Dashboard</button></a>
             </div>
        </div>
     </main>

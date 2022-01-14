@@ -71,27 +71,27 @@
     <!-- [MAIN] -->
     <main class="bg-dark py-5">
     <div class="container mb-5">
-    <h1 class="text-center text-light fw-light display-4 mb-0">Our Vet* Pets</h1>
-    <p class="text-center text-muted text-decoration-overline lh-1 mt-0 mb-4 mx-auto w-50"><sub>*To this list belong Pets above 8 years of age</sub></p>
-        <hr class="bg-success py-1 mb-5 mx-auto w-75">
-        <!-- table -->
-        <div class="table-responsive">
-            <table class="table table-secondary table-striped border my-0 mx-auto w-75">
-                <thead class="table-dark text-white text-center fw-light">
-                    <tr class="align-middle">
-                        <td>Picture</td>
-                        <td>Name</td>
-                        <td>Breed</td>
-                        <td>Age <small>(years)</small></td>
-                        <td>Location</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?= $seniors ?>
-                </tbody>
-            </table>
-        </div>
+        <h1 class="text-center text-light fw-light display-4 mb-0">Our Vet* Pets</h1>
+        <p class="text-center text-muted text-decoration-overline lh-1 mt-0 mb-4 mx-auto w-50"><sub>*To this list belong Pets above 8 years of age</sub></p>
+            <hr class="bg-success py-1 mb-5 mx-auto w-75">
+            <!-- table -->
+            <div class="table-responsive">
+                <table class="table table-secondary table-striped border my-0 mx-auto w-75">
+                    <thead class="table-dark text-white text-center fw-light">
+                        <tr class="align-middle">
+                            <td>Picture</td>
+                            <td>Name</td>
+                            <td>Breed</td>
+                            <td>Age <small>(years)</small></td>
+                            <td>Location</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?= $seniors ?>
+                    </tbody>
+                </table>
+            </div>
     </div>
     </main>
 

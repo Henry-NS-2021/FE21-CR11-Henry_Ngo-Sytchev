@@ -71,38 +71,36 @@ mysqli_close($connect);
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login & Registration System</title>
-<!-- BOOTSTRAP -->
-<?php require_once 'components/bootstrap.php'?>
-    <!-- [CSS] -->
-    <style>
-        main{
-           height: 100vh;
-       }
-    </style>
+   <!-- BOOTSTRAP -->
+   <?php require_once 'components/bootstrap.php'?>
+   <!-- CSS -->
+   <link rel="stylesheet" href="styles/style.css">
+   <title>Login & Registration System</title>
 </head>
 <body>
     <!-- [MAIN] -->
     <main class="bg-dark py-5">
-        <div class="container bg-light rounded-3 text-dark border border-success  border-3 w-50 py-5">
+        <div class="container bg-light rounded-3 text-dark border border-success border-3 py-5 ma-auto" style="max-width: 320px">
             <!-- [FORM] -->
-            <form class="w-auto rounded mx-auto shadow py-5 px-3 border" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-                <div class="text-center  mb-2"><i class="bi bi-box-arrow-in-right display-1 text-success"></i></div>
-                <h2 class="display-5 mb-2 mt-0 text-center text-success">Sign In</h2>
-                <hr class="bg-success py-1 mb-5 mx-auto w-50">
-                <?php
-                if (isset($errMSG)) {
-                    echo $errMSG;
-                }
-                ?>
-                <input class="form-control mb-1" type="email" autocomplete="off" name="email"  placeholder="Your Email" value="<?php echo $email; ?>"  maxlength="40" />
-                <span class="text-danger"><?php echo $emailError; ?></span>
+            <form class="rounded mx-auto shadow py-5 px-3 border" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+                <div class="text-center mb-2">
+                    <i class="bi bi-box-arrow-in-right display-1 text-success"></i></div>
+                    <h2 class="display-5 mb-2 mt-0 text-center text-success">Sign In</h2>
+                    <hr class="bg-success py-1 mb-5 mx-auto w-50">
+                    <?php
+                    if (isset($errMSG)) {
+                        echo $errMSG;
+                    }
+                    ?>
+                    <input class="form-control mb-1" type="email" autocomplete="off" name="email"  placeholder="Your Email" value="<?php echo $email; ?>"  maxlength="40" />
+                    <span class="text-danger"><?php echo $emailError; ?></span>
 
-                <input class="form-control" type="password" name="pass"   placeholder="Your Password" maxlength="15"  />
-                <span class="text-danger"><?php echo $passError; ?></span>
-                <hr class="border border-success">
-                <p class="text-center mt-3 mb-5"><button class="btn btn-block btn-primary w-50" type="submit" name="btn-login">Sign In</button></p>
-                <small>Not registered yet? <a href="register.php">Click here</a></small>
+                    <input class="form-control" type="password" name="pass"   placeholder="Your Password" maxlength="15"  />
+                    <span class="text-danger"><?php echo $passError; ?></span>
+                    <hr class="border border-success">
+                    <p class="text-center mt-3 mb-5"><button class="btn btn-block btn-primary w-50" type="submit" name="btn-login">Sign In</button></p>
+                    <small>Not registered yet? <a href="register.php">Click here</a></small>
+                </div>
             </form>
         </div>
     </main>

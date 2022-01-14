@@ -58,10 +58,10 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../../styles/style.css">
     <title>Code Review 11: Record deleted</title>
 </head>
-<body>
-    <main class="bg-dark py-5">
+<body class="dashboard_body">
+    <main class="bg-transparent py-5">
         <div class="container mb-3">
-            <div class="bg-none border border-<?=$class;?> text-<?=$class;?> text-center pt-4 pb-4 mb-5"  role="alert">
+            <div class="bg-none border border-3 border-<?=$class;?> text-<?=$class;?> text-center pt-4 pb-4 mb-5 mx-auto alert_notification"  role="alert">
                 <p><?=$message;?></p>
                <a href ='../../dashBoard.php    '><button class ="btn btn-success mb-2 py-0 px-5 fw-bold mx-auto w-50" type='button'>Dashboard</button></a >
            </div>

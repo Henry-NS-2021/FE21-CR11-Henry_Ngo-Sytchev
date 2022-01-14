@@ -60,13 +60,13 @@
     <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Update animal record</title>
 </head>
-<body id="dashboard_body"> 
+<body class="dashboard_body"> 
     <!-- [MAIN] -->
     <main class="bg-transparent pb-5">
-        <div class="container" style="max-width: 720px">
+        <div class="container">
 
         <!-- [FORM] -->
-        <form class="rounded-3 bg-muted" method="POST" action="actions/a_update.php" enctype="multipart/form-data"  style="max-width: 720px">
+        <form class="rounded-3 bg-muted mx-auto" method="POST" action="actions/a_update.php" enctype="multipart/form-data">
             <!-- table -->
             <div class="table-responsive">
             <table class="table mx-0 mb-0 text-white fs-6">

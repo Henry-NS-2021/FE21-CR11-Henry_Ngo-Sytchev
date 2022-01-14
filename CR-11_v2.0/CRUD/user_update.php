@@ -87,7 +87,7 @@ mysqli_close($connect);
    <link rel="stylesheet" href="styles/style.css">
    <title>Update Profile</title>
 </head>
-<body id="dashboard_body">
+<body class="dashboard_body">
 
 <!-- [MAIN] -->
 <main class="bg-transparent">

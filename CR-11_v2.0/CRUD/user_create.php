@@ -140,20 +140,20 @@ mysqli_close($connect);
     <link rel="stylesheet" href="styles/style.css">
     <title>Create New user</title>
 </head>
-<body id="dashboard_body">
+<body class="dashboard_body">
     <!-- [MAIN] -->
     <main class="bg-transparent pt-5">
 
-    <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5" style="max-width: 720px">
+    <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5 authentication">
             <!-- [FORM] -->
             <form class="w-auto rounded-3 mx-auto shadow py-5 px-5" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
-                    <div class="text-center  mb-2"><i class="bi bi-person-circle text-light display-1"></i></div>
+                    <div class="text-center  mb-2"><i class="bi bi-person-plus-fill text-light display-1"></i></div>
                     <h2 class="display-5 mb-2 mt-0 text-center text-info">Create New User</h2>
                     <hr class="bg-info py-1 mb-5 mx-auto w-75">
                     <?php
                     if (isset($errMSG)) {
                     ?>
-                    <div class="alert alert-<?php echo $errTyp ?>" >
+                    <div class="alert alert-<?php echo $errTyp ?> alert_notification" >
                                     <p><?php echo $errMSG; ?></p>
                                     <p><?php echo $uploadError; ?></p>
                     </div>

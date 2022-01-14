@@ -24,7 +24,7 @@ session_start();
         if(mysqli_num_rows($query) == 1){
             foreach($result as $row){
                 $display = "
-                <div class='card mt-5 mx-auto' style='min-width: 220px; width: 100%; max-width: 480px'>
+                <div id='pet_card' class='card rounded-3 mt-5 mx-auto'>
                     <img class='card-img-top img-fluid' src='../pictures/{$row["picture"]}' alt='Card image cap'>
                     <div class='card-body'>
                         <h3 class='card-title text-center mt-3'>{$row["name"]}
@@ -41,7 +41,7 @@ session_start();
                         <hr>
                         <p class='card-text text-center mb-0'>
                             <small'>
-                            <a class='" . ($row['status'] == 'adopted'? 'd-none': '') . " btn btn-outline-primary  p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
+                            <a class='" . ($row['status'] == 'adopted' || @($_SESSION['adm'])? 'd-none': '') . " btn btn-outline-primary  p-0 m-0 w-50' href='pet_adoption.php?id={$id}&user_id={$user_id}'><i class='bi bi-house-door-fill'></i> Take me home</a>
                             </small>
                         </p>
                         <p class='" . (@($_SESSION['adm'])? 'd-none': '') . " text-center p-0 mb-2'>

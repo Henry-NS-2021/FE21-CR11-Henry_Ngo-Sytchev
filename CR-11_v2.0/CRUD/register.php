@@ -87,6 +87,8 @@ if (isset($_POST['btn-signup'])) {
    } else if (strlen($pass) < 6) {
        $error = true;
        $passError = "Password must have at least 6 characters.";
+   } else{
+       echo "BIG GBUUUG!";
    }
 
    // password hashing for security
@@ -120,31 +122,27 @@ mysqli_close($connect);
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login & Registration System</title>
-<!-- BOOTSTRAP -->
-<?php require_once 'components/bootstrap.php'?>
-    <!-- [CSS] -->
-    <style>
-        main{
-           height: 100vh;
-       }
-    </style>
+   <!-- BOOTSTRAP -->
+   <?php require_once 'components/bootstrap.php'?>
+   <!-- CSS -->
+   <link rel="stylesheet" href="styles/style.css">
+   <title>Login & Registration System</title>
 </head>
 <body>
     <!-- [MAIN] -->
     <main class="bg-dark py-5">
-        <div class="container bg-light rounded-3 text-dark border border-success border-3 w-50 py-5">
+        <div class="container bg-light rounded-3 text-dark border border-success border-3 py-5 authentication">
             <!-- [FORM] -->
             <form class="w-auto rounded mx-auto shadow py-5 px-3 border" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
-                    <div class="text-center  mb-2"><i class="bi bi-person-badge text-success display-1"></i></div>
+                    <div class="text-center mb-2"><i class="bi bi-person-badge text-success display-1"></i></div>
                     <h2 class="display-5 mb-2 mt-0 text-center text-success">Sign Up</h2>
                     <hr class="bg-success py-1 mb-5 mx-auto w-50">
                     <?php
                     if (isset($errMSG)) {
                     ?>
-                    <div class="alert alert-<?php echo $errTyp ?>" >
-                                    <p><?php echo $errMSG; ?></p>
-                                    <p><?php echo $uploadError; ?></p>
+                    <div class="alert alert-<?php echo $errTyp ?> alert_notification">
+                        <p><?php echo $errMSG; ?></p>
+                        <p><?php echo $uploadError; ?></p>
                     </div>
 
                     <?php
@@ -152,16 +150,16 @@ mysqli_close($connect);
                     ?>
 
                     <!-- first_name -->
-                    <input class='form-control mb-1 py-1' type ="text"  name="fname" placeholder="First name" maxlength="50" value="<?php echo $fname ?>"  />
+                    <input class='form-control mb-1 py-1' type ="text"  name="fname" placeholder="First name" maxlength="50" value="<?php echo $fname ?>">
                         <span class="text-danger"> <?php echo $fnameError; ?> </span>
                     <!-- last name -->
-                    <input class='form-control mb-1 py-1' type ="text"  name="lname" placeholder="Surname" maxlength="50" value="<?php echo $lname ?>"  />
+                    <input class='form-control mb-1 py-1' type ="text"  name="lname" placeholder="Surname" maxlength="50" value="<?php echo $lname ?>">
                         <span class="text-danger"> <?php echo $fnameError; ?> </span>
                     <!-- email -->
-                    <input class='form-control mb-1 py-1' type="email" name="email" placeholder="Enter Your Email" maxlength="40" value ="<?php echo $email ?>"  />
+                    <input class='form-control mb-1 py-1' type="email" name="email" placeholder="Enter Your Email" maxlength="40" value ="<?php echo $email ?>">
                     <span  class="text-danger"> <?php echo $emailError; ?> </span>
                     <!-- phone number -->
-                    <input class='form-control mb-1 py-1' placeholder="Phone number" type="text"  name="phone_number" value ="<?php echo $phone_number ?>"/>
+                    <input class='form-control mb-1 py-1' placeholder="Phone number" type="text"  name="phone_number" value ="<?php echo $phone_number ?>">
                     <span class="text-danger"> <?php echo $phone_numberError; ?> </span>
                     <!-- address -->
                     <input class='form-control mb-1 py-1' placeholder="Address" type="text"  name="address" value ="<?php echo $address ?>"/>
@@ -173,7 +171,7 @@ mysqli_close($connect);
                     <span class="text-danger"> <?php echo $picError; ?> </span>
                     </div> 
                     <!-- password -->
-                    <input type="password" name="pass" class="form-control mb-1 py-1" placeholder="Enter Password" maxlength="15"  />
+                    <input type="password" name="pass" class="form-control mb-1 py-1" placeholder="Enter Password" maxlength="15">
                         <span class="text-danger"> <?php echo $passError; ?> </span>
                     <hr/>
                     <!-- submit button -->

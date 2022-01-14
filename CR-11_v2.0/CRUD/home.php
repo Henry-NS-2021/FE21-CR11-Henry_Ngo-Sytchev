@@ -62,59 +62,61 @@ mysqli_close($connect);
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome - <?php echo $row['first_name']; ?></title>
-<!-- BOOTSTRAP -->
-<?php require_once 'components/bootstrap.php'?>
-<!-- CSS -->
+   <!-- BOOTSTRAP -->
+   <?php require_once 'components/bootstrap.php'?>
+   <!-- CSS -->
+   <link rel="stylesheet" href="styles/style.css">
+   <!-- CSS -->
 <style>
-main{
-   min-height: 70vh;
-   padding: 0 2.5vw;
-}
-
-.userImage{
-   width: 25vw;
-   border-radius: 50px
-}
-
-.hero {
-   background: rgb(2,0,36);
-   background: linear-gradient(24deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);  
-}
-
-#pets_link{
-   color: whitesmoke;
-   font-weight: lighter;
-   font-size: 1.1em;
-   transition: font-weight .35s, border-bottom .35s;
-}
-
-#pets_link:hover{
-   font-weight: bold;
-   color: black;
-}
-
-#cat_img{
-   transition: transform .65s;
-}
-
-#cat_img:hover{
-   transform: scale(1.15);
-}
-
-#homepage{
-   max-width: 1440px;
-}
-
-#my_adoptions{
-   max-width: 520px;
-} 
+   main{
+      min-height: 70vh;
+      padding: 0 2.5vw;
+   }
+   
+   .userImage{
+      width: 25vw;
+      border-radius: 50px
+   }
+   
+   .hero {
+      background: rgb(2,0,36);
+      background: linear-gradient(24deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 100%);  
+   }
+   
+   #pets_link{
+      color: whitesmoke;
+      font-weight: lighter;
+      font-size: 1.1em;
+      transition: font-weight .35s, border-bottom .35s;
+   }
+   
+   #pets_link:hover{
+      font-weight: bold;
+      color: black;
+   }
+   
+   #cat_img{
+      transition: transform .65s;
+   }
+   
+   #cat_img:hover{
+      transform: scale(1.15);
+   }
+   
+   #homepage{
+      max-width: 1440px;
+   }
+   
+   #my_adoptions{
+      max-width: 520px;
+   } 
 
 #adoption_font{
    font-size: 1rem;
 }
-    
+
 </style>
+   <title>Welcome - <?php echo $row['first_name']; ?></title>
 </head>
 <body>
    <!-- [HEADER] -->

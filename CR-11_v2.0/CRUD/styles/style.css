@@ -4,6 +4,41 @@
           box-sizing: border-box;
 }
 
+.alert_notification {
+  width: 100%;
+  max-width: 720px;
+}
+
+.alert_notification th {
+  color: whitesmoke;
+}
+
+.authentication {
+  width: 100%;
+  max-width: 360px;
+}
+
+.custom_table {
+  min-width: 100px;
+  width: 100%;
+}
+
+.dashboard_table {
+  min-width: 100px;
+  width: 100%;
+  max-width: 1440px;
+}
+
+form, .custom_table {
+  max-width: 720px;
+}
+
+#pet_card {
+  min-width: 100px;
+  width: 100%;
+  max-width: 680px;
+}
+
 footer > a:hover {
   font-size: smaller;
 }
@@ -13,7 +48,7 @@ input {
 }
 
 main {
-  min-height: 70vh;
+  min-height: 100vh;
   padding: 5% 0%;
   background: #212529;
 }
@@ -28,7 +63,7 @@ th {
   color: whitesmoke;
 }
 
-#dashboard_body {
+.dashboard_body {
   background: #212529 url("../pictures/layout_img/bg.jpeg") center center no-repeat;
   background-size: cover;
 }

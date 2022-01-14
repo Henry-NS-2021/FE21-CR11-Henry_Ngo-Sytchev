@@ -1,6 +1,43 @@
+$clr_dark: #212529
+$clr_light: whitesmoke
+    
 * 
     margin: 0
     box-sizing: border-box
+
+// all alerts
+.alert_notification
+    width: 100%
+    max-width: 720px
+
+    th
+        color: $clr_light
+
+// all forms & tables
+.authentication
+    width: 100%
+    max-width: 360px
+
+.custom_table
+    min-width: 100px
+    width: 100%
+
+.dashboard_table
+    min-width: 100px
+    width: 100%
+    max-width: 1440px
+
+form, .custom_table
+    max-width: 720px
+
+// all tables
+    color: $clr_light
+
+// details page
+#pet_card
+    min-width: 100px
+    width: 100%
+    max-width: 680px
 
 // footer
 footer>a:hover
@@ -11,9 +48,9 @@ input
     width: 100%
 
 main
-    min-height: 70vh
+    min-height: 100vh
     padding: 5% 0%
-    background: #212529
+    background: $clr_dark
 
 .label 
     font-weight: lighter
@@ -23,11 +60,11 @@ main
 //animal a_create page
 th
     text-align: left
-    color: whitesmoke
+    color: $clr_light
 
 // dashboard
-#dashboard_body
-    background: #212529 url("../pictures/layout_img/bg.jpeg") center center no-repeat
+.dashboard_body
+    background: $clr_dark url("../pictures/layout_img/bg.jpeg") center center no-repeat
     background-size: cover
 
 #user_img

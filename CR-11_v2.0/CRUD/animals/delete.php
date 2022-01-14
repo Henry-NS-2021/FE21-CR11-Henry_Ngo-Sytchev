@@ -24,7 +24,7 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
             
             foreach($result as $data){
                 $delete .= "
-                <div class='alert alert-light border border-danger border-3 my-5 text-center text-danger fs-4 mx-auto w-100' style='max-width: 720px'>
+                <div class='alert alert-light border border-danger border-3 my-5 text-center text-danger fs-4 mx-auto alert_notification' style='max-width: 720px'>
                     <h2 class='display-6 my-3 fw-bold'>Attention!</h2>
                     <hr class='bg-danger py-1 mb-4 mx-auto w-75'>
                     <p>You are about to <b>delete</b> this record.</p> 
@@ -40,26 +40,22 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
                     </form> 
                 </div>
                 
-                <div class='card mb-3 mx-auto w-75' style='min-width: 25vw; max-width: 720px'>
-                <div class='row g-0'>
+                <div class='card mb-3 mx-auto mx-auto alert_notification'>
+                <div class='row g-0 text-center'>
                     <div class='col-sm-12 col-md-5 align-self-center'>
-                        <div><img class='img-fluid align-middle' src='../pictures/" .$data['picture'] . "'></div>
+                        <div><img class='img-fluid align-middle' src='../pictures/" . $data['picture'] . "'></div>
                     </div>
                     <div class='col-sm-12 col-md-7'>
                         <article class='card-body'>
-                            <h1 class='card-title display-5 fw-bold mt-3 mb-2 text-center'>{$data['name']} </h1>
+                            <h1 class='card-title display-3 mt-3 mb-4'>{$data['name']} </h1>
 
-                            <h3 class='card-subtitle text-secondary text-center mb-3'>{$data['breed']}</h3><hr>
+                            <hr class='py-1 mb-1'>
 
-                            <p class='card-text mt-4 mb-0'><small class='text-muted'>AGE: </small><i>{$data['age']} years old</i></p>
-
-                            <p class='card-text mt-0 mb-0'><small class='text-muted'>SIZE: </small><i>{$data['size']} cm</i></p>
-
-                            <p class='card-text mt-0 mb-3'><small class='text-muted'>HOBBIES: </small><i>{$data['hobbies']}</i></p>
+                
+                            <div class='border border-3 border-dark pt-1 pb-2 m-0'>
+                                <p class='card-text text-center my-0'><small class='text-muted'><i class='bi bi-geo-alt-fill fs-3 text-dark'></i> </small><i>{$data['location']}</i></p>
+                            </div>
                         </article>
-                    </div>
-                    <div class='card-footer pt-1 m-0'>
-                        <p class='card-text text-center my-0'><small class='text-muted'><i class='bi bi-geo-alt-fill fs-3 text-dark'></i> </small><i>{$data['location']}</i></p>
                     </div>
                 </div>
                 </div>";
@@ -93,10 +89,10 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Adopt a pet</title>
 </head>
-<body>
+<body class="dashboard_body">
 
     <!-- [MAIN] -->
-    <main class="bg-dark">
+    <main class="bg-transparent pb-5">
         <div class="container">
         <section class="container-fluid m-0 mx-auto py-5">
         

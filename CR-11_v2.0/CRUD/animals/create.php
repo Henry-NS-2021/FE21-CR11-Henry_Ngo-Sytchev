@@ -2,10 +2,10 @@
 session_start();
 require_once '../components/db_connect.php';
 
-// if (isset($_SESSION['user']) != "") {
-//    header("Location: ../home.php");
-//    exit;
-// }
+if (isset($_SESSION['user']) != "") {
+   header("Location: ../home.php");
+   exit;
+}
 
 if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
    header("Location: ../login.php");
@@ -33,14 +33,14 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../styles/style.css">
     <title>Code Review 11: Create new record</title>
 </head>
-<body id="dashboard_body">
+<body class="dashboard_body">
     <!-- [MAIN] -->
     <main class="bg-transparent pt-5">
-    <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5 px-4" style="max-width: 720px">
+    <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5 px-4 custom_table">
     <!-- [FORM] -->
     <form method="POST" action="actions/a_create.php" enctype="multipart/form-data" class="my-0">
-        
-        <table class="table m-0 text-muted fs-6 w-100">
+        <div class="table-responsive">
+        <table class="table m-0 text-muted fs-6">
                 <tr>
                     <td colspan="2"><h2 class="display-5 mt-0 text-center text-info">Add New Animal</h2>
                     <hr class="bg-info shadow py-1 mb-5 mt-3 mx-auto w-75">
@@ -86,8 +86,9 @@ if (!isset($_SESSION['adm']) && !isset($_SESSION['user'])) {
                     </td>
                 </tr>
             </table>
+            </div>
                 <div class="text-end">
-                    <input class="btn btn-success px-5 py-3 mb-2 mt-4 fw-bold w-75" type="submit" name="name" placeholder="Name" value="Add Animal">
+                    <input class="btn btn-success px-5 py-3 mb-2 mt-4 fw-bold w-75" type="submit" value="Add Animal">
                     <a href="../dashBoard.php"><p class="btn btn-outline-light border border-1 px-5 py-0 mb-4 fw-bold mx-auto w-75">Dashboard</p></a>
                 </div>                
     </form>

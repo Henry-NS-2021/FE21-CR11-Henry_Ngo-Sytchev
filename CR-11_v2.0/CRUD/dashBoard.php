@@ -30,7 +30,7 @@ if(mysqli_num_rows($query_animals) > 0){
         $animals .= "
         <tr class='align-middle text-center border-top border-bottom border-secondary'>
             <td class='text-center'>
-            <img class='img-fluid' width='130px' src='pictures/{$row["picture"]}'>
+            <img class='img-fluid  rounded-3' width='130px' src='pictures/{$row["picture"]}'>
             </td>
             <td class='text-center'>{$row['name']}</td>
             <td class='text-center'>{$row['breed']}</td>
@@ -108,7 +108,7 @@ mysqli_close($connect);
    <link rel="stylesheet" href="styles/style.css">
    <title>Adm-DashBoard</title>
 </head>
-<body id="dashboard_body">
+<body class="dashboard_body">
     <!-- [MAIN] -->
 <main  class="bg-transparent pt-0">
         <!-- [DASHBOARD] -->
@@ -127,7 +127,7 @@ mysqli_close($connect);
             <div class="row pt-3 mx-auto border">
                 <!-- admin picture and buttons -->
                 <div class="col-sm-12 col-md-6 justify-content-center align-self-center text-center ">    
-                    <div><img id="admin_img" class="my-2" src="pictures/<?= $picture ?>" alt="Adm avatar"></div>
+                    <div><img id="admin_img" class="my-2 rounded-3" src="pictures/<?= $picture ?>" alt="Adm avatar"></div>
                     <h5 class="fw-lighter text-info fw-lighter mb-1"><?= $full_name ?></h5>
                     <p class="text-center text-danger fw-bold"><sup>Administrator</sup></p>
                 </div> 
@@ -163,7 +163,7 @@ mysqli_close($connect);
                     <h1 class='display-5 text-center text-white mt-5'>Pet Records</h1>
                     <hr class="bg-info shadow py-1 w-50 mx-auto mb-4 mt-1">
 
-                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto">
+                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto dashboard_table">
                     <table class="table table-secondary table-striped my-0">
                         <thead class="table-dark">
                             <tr class="align-middle">
@@ -187,7 +187,7 @@ mysqli_close($connect);
                     <h1 class='display-5 text-center text-white mt-5'>Users Records</h1>
                     <hr class="bg-info shadow py-1 w-50 mx-auto mb-4 mt-1">
 
-                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto">
+                    <div class="row w-75 table-responsive border border-info border-2 rounded-3 mt-3 mx-auto dashboard_table">
                     <table class="table table-light table-striped my-0">
                         <thead class="table-dark">
                             <tr class="align-middle">
