@@ -146,10 +146,10 @@ mysqli_close($connect);
 
     <div class="container bg-muted rounded-3 text-dark border border-info border-3 py-5 authentication">
             <!-- [FORM] -->
-            <form class="w-auto rounded-3 mx-auto shadow py-5 px-5" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
+            <form class="rounded-3 mx-auto shadow py-5 px-3" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" enctype="multipart/form-data">
                     <div class="text-center  mb-2"><i class="bi bi-person-plus-fill text-light display-1"></i></div>
                     <h2 class="display-5 mb-2 mt-0 text-center text-info">Create New User</h2>
-                    <hr class="bg-info py-1 mb-5 mx-auto w-75">
+                    <hr class="bg-info py-1 mb-5">
                     <?php
                     if (isset($errMSG)) {
                     ?>
@@ -180,7 +180,7 @@ mysqli_close($connect);
                     <!-- picture -->
                     <div class="input-group py-0 mb-1">
                         <label class="input-group-text" for="picture"><i class="bi bi-camera2 text-success fw-bold"></i></label>
-                        <input class='form-control' type="file" name="picture" value="<?php echo $picture ?>" id="picture" aria-describedby="picture">
+                        <input class='form-control' type="file" name="picture" id="picture" aria-describedby="picture">
                     <span class="text-danger"> <?php echo $picError; ?> </span>
                     </div> 
                     <!-- password -->

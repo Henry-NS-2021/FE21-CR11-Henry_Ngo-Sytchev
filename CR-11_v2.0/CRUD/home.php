@@ -143,13 +143,13 @@ mysqli_close($connect);
       <!-- welcome message for user -->
       <div class="col-5 offset-md-1 text-center align-self-center">
          <h2 class="fw-lighter text-info mt-4 mb-3">Hi, <?php echo $row['first_name']; ?></h2>
-         <h1 class="display-4 text-light fw-bolder mb-3 lh-1">Welcome to<br> <span class="fw-lighter display-2">Pet Storey</span></h1>
+         <h1 class="display-4 text-light fw-bolder mb-3 lh-1">Welcome to<span class="fw-lighter display-2"> Pet Storey</span></h1>
       </div>
       <hr class="bg-warning py-1 mt-3 mb-0">
    </header>
    <!-- [NAVBAR] -->
    <nav class="bg-success py-3">
-         <p class="text-center py-2 px-5 m-0"><a  id="pets_link" class="nav_link text-decoration-none btn-lg btn-warning py-3" href="animals/index.php">VISIT PETS</a></p>
+         <p class="text-center py-2 m-0"><a  id="pets_link" class="nav_link text-decoration-none btn-lg btn-warning py-3 px-5" href="animals/index.php">VISIT PETS</a></p>
       
    </nav>
    <!-- [MAIN] -->

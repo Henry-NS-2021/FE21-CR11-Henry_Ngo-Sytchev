@@ -121,10 +121,9 @@ mysqli_close($connect);
                    <td><input class="form-control" type= "text" name="last_name"  placeholder="Last Name" value ="<?php echo $l_name ?>"></td>
                </tr>
                <tr>
-                   <th>Status</th>
+                   <th class="text-danger">User Status</th>
                    <td>
-                       <select class="form-control" name="user_status">
-                       <!-- <option value= "<?php echo $user_status ?>"><?php echo $user_status ?></option> -->
+                       <select class="form-control fw-bold text-danger" class="form-control" name="user_status">
                        <option value="<?php echo $user_status ?>"><?php echo ($user_status == 'adm')? 'adm': 'user' ?></option>
                        <option value="<?php echo ($user_status == 'adm')? 'user': 'adm' ?>">
                         <?php echo ($user_status == 'adm')? 'user': 'adm' ?>
