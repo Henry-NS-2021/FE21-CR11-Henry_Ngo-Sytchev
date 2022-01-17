@@ -49,11 +49,7 @@ session_start();
                                 <a class='btn btn-dark w-50' href='index.php'>Return to the pet list</a>
                             </sub>
                         </p>
-                        <p class='" . (@($_SESSION['user'])? '': 'd-none') . " text-center p-0 m-0'>
-                            <sub>
-                                <a class='btn btn-outline-dark p-0 w-50' href='../home.php'>Home</a>
-                            </sub>
-                        </p>
+                    
                         <p class='" . (@($_SESSION['adm'])? '': 'd-none') . " text-center p-0 m-0'>
                             <sub>
                                 <a class='btn btn-outline-dark p-0 w-50' href='../dashBoard.php'>Dashboard</a>

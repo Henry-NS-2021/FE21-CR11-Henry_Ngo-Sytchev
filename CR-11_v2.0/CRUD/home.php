@@ -20,17 +20,18 @@ $id = $_SESSION['user'];
 $query = mysqli_query($connect, "SELECT * FROM users WHERE id=" . $_SESSION['user']);
 $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
 
+// query for the adopted pets by the user
 $sql_adopt = "SELECT animals.animal_id, animals.name, animals.age, animals.location, animals.picture, animals.size FROM animals INNER JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id INNER JOIN users ON pet_adoption.user_id = users.id WHERE users.id = $id";
 $query_adopt = mysqli_query($connect, $sql_adopt);
-
+$count = mysqli_num_rows($query_adopt);// number of adoptions by user
 
 if(mysqli_num_rows($query_adopt) >= 1){
    $adopt_record = mysqli_fetch_all($query_adopt, MYSQLI_ASSOC);
    foreach($adopt_record as $adoption){
    $adoptions .=         
       "<tr class='align-middle my-3'>
-         <td>
-         <a href='animals/details.php?id={$adoption["animal_id"]}'><img class='img-fluid rounded-1' src='pictures/{$adoption["picture"]}'  style='max-width: 200px'></a>
+         <td class='text-center'>
+         <a href='animals/details.php?id={$adoption["animal_id"]}'><img class='img-fluid rounded-1' src='pictures/{$adoption["picture"]}' style='max-width: 150px'></a>
          </td>
          <td>
             <p id='adoption_font' class='align-middle p-0 text-secondary bg-transparent'>
@@ -52,6 +53,10 @@ if(mysqli_num_rows($query_adopt) >= 1){
          </tr>";
    }
 
+// query to count the amount of adoptions by user
+// echo $sql_count = "SELECT COUNT(*) AS adoptions FROM animals INNER JOIN pet_adoption ON animals.animal_id = pet_adoption.pet_id INNER JOIN users ON pet_adoption.user_id = users.id WHERE users.id = $id";
+// $query_count = mysqli_query($connect, $sql_count);
+// var_dump($query_count);
 
 mysqli_close($connect);
 ?>
@@ -74,7 +79,7 @@ mysqli_close($connect);
    }
    
    .userImage{
-      width: 25vw;
+      width: 15vw;
       border-radius: 50px
    }
    
@@ -129,15 +134,16 @@ mysqli_close($connect);
             <a class="text-decoration-none text-light mx-2" href="logout.php?logout">Sign Out <i class="bi bi-box-arrow-right"></i></a>
          </sub>
       </p>
-      
-      <div class="col-4 justify-content-center text-center ">    
+      <!-- user image and name -->
+      <div class="col-4 justify-content-center align-self-center text-center ">    
          <img class="userImage my-2" src="pictures/<?php echo $row['picture']; ?>" alt="<?php echo $row['first_name']; ?>">
          <h5 class="fw-lighter text-info fw-lighter mb-1"><?php echo $row['first_name'] . " " . $row['last_name']; ?></h5>
          <p class="text-center text-light fw-bold">User</p>
       </div>
+      <!-- welcome message for user -->
       <div class="col-5 offset-md-1 text-center align-self-center">
-         <h2 class="fw-lighter text-info mt-4">Hi, <?php echo $row['first_name']; ?></h2>
-         <h1 class="display-3 text-light fw-bolder mb-3">Welcome to Pet Storey!</h1>
+         <h2 class="fw-lighter text-info mt-4 mb-3">Hi, <?php echo $row['first_name']; ?></h2>
+         <h1 class="display-4 text-light fw-bolder mb-3 lh-1">Welcome to<br> <span class="fw-lighter display-2">Pet Storey</span></h1>
       </div>
       <hr class="bg-warning py-1 mt-3 mb-0">
    </header>
@@ -148,10 +154,11 @@ mysqli_close($connect);
    </nav>
    <!-- [MAIN] -->
    <main class="bg-dark text-light">
+      <div class="container overflow-hidden justify-content-center">
       <!-- Content: welcome and adoptions -->
-      <section id="homepage" class="row gx-2 py-3 mx-auto">
+      <section id="homepage" class="row py-3 mx-auto">
          <!-- welcome display -->
-         <div id="welcome_msg" class="col-sm-12 col-md col-lg alert-info text-center text-dark fs-5 border border-1 border-success rounded-1 py-5 px-4">
+         <div id="welcome_msg" class="col-sm-12 col-md-6 col-lg-6 alert-info text-center text-dark fs-5 border border-1 border-success rounded-1 mb-3 mx-1 py-5 px-4">
             <p class="text-center">
                <a href="animals/index.php"><img id="cat_img" class="img-fluid mx-auto mt-2 mb-2" width="250vw" src="pictures/layout_img/home.png" alt="animal"></a>
             </p>
@@ -162,8 +169,8 @@ mysqli_close($connect);
          </div>
 
          <!-- adoptions display -->
-         <div id="my_adoptions" class="col-sm-12 col-md-4 col-lg-3 align-self-start border border-primary rounded-1 mx-2 px-2">
-            <h2 class="fw-lighter text-center border-bottom border-primary py-4 px-2">My Adoptions</h2>
+         <div id="my_adoptions" class="col-sm-12 col-md-5 col-lg-5 align-self-start border border-primary rounded-1 mb-3 mx-1 px-2">
+            <h2 class="fw-lighter text-center border-bottom border-primary py-4 px-1">My Adoptions (<?php echo $count; ?>)</h2>
             <!-- table -->
             <div class="table-responsive">
                <table class="table table-borderless table-muted">
@@ -174,6 +181,7 @@ mysqli_close($connect);
             </div>
          </div>
       </section>
+      </div>
    </main>
 
    
