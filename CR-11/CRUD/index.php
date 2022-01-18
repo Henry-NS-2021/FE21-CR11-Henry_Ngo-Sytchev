@@ -80,7 +80,7 @@ mysqli_close($connect);
 <body>
     <!-- [MAIN] -->
     <main class="bg-dark py-5">
-        <div class="container bg-light rounded-3 text-dark border border-success border-3 py-5 ma-auto" style="max-width: 320px">
+        <div class="container bg-light rounded-3 text-dark border border-success border-3 py-5 ma-auto authentication">
             <!-- [FORM] -->
             <form class="rounded mx-auto shadow py-5 px-3 border" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                 <div class="text-center mb-2">
