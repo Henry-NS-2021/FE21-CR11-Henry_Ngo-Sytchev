@@ -127,5 +127,15 @@ session_start();
     $url = "../"; 
     require_once("../components/footer.php"); 
     ?>
+
+    
+    <!-- [JAVASCRIPT] -->
+    <script>
+        // prevents submiting the data again after refreshing the page
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+
 </body>
 </html>

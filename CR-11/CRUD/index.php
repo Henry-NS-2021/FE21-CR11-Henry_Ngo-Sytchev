@@ -51,7 +51,7 @@ if (isset($_POST['btn-login'])) {
        if ($count == 1 && $row['password'] == $password) {
            if($row['user_status'] == 'adm'){
            $_SESSION['adm'] = $row['id'];          
-           header( "Location: dashboard.php");}
+           header( "Location: dashBoard.php");}
            else{
                $_SESSION['user'] = $row['id'];
               header( "Location: home.php");

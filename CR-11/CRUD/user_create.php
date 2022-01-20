@@ -197,5 +197,14 @@ mysqli_close($connect);
         </div>
     </main>
 
+    
+    <!-- [JAVASCRIPT] -->
+    <script>
+        // prevents submiting the data again after refreshing the page
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+
 </body>
 </html>
